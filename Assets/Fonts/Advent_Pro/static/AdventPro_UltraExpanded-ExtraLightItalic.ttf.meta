@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: f2ff106ed557dc24c915fd04a5d24678
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Advent Pro UltraExpanded
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 32f9f79f297d1c74fa37a0b3c6699ec8, type: 3}
+  - {fileID: 12800000, guid: 22f4727f50782a546ae836fd934d63a3, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
