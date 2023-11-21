@@ -3,7 +3,9 @@ using UnityEngine;
 public class PlayerControllerSingleton : MonoBehaviour
 {
     public static PlayerControllerSingleton Instance { get; private set; }
-    public PlayerCOntroller playerController;
+    public PlayerCOntroller PlayerCOntroller { get; internal set; }
+
+    public PlayerCOntroller PlayerController;
     public playerMenuManager playerMenuManager;
 
     private void Awake()

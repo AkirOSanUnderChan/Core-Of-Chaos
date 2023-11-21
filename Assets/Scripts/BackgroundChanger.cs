@@ -10,6 +10,8 @@ public class BackgroundChanger : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
+
         InvokeRepeating("ChangeBackground", 0f, changeInterval);
     }
 

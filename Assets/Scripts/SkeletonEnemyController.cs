@@ -11,11 +11,20 @@ public class SkeletonEnemyController : MonoBehaviour
 
     [SerializeField] private Transform target;
 
-    public int XPForKillEnemy = 10;
+    public string EnemyName;
+
+    public int XPForKillEnemy;
+    public int CointForKillEnemy;
     public TextMeshProUGUI enemyhpCount;
     public Slider enemySliderHP;
+    public TextMeshProUGUI EnemyNameText;
 
-    public int enemyMaxHP = 5;
+    public AudioSource EnemyDamageSourse;
+    public AudioClip TakeDamageSound;
+    public AudioClip DeathSound;
+
+    public int enemyDamage;
+    public int enemyMaxHP;
     public int enemyCurrentHP;
 
     Animator animator;
@@ -25,16 +34,20 @@ public class SkeletonEnemyController : MonoBehaviour
     public float distanceToPlayer;
     public float maxChaseDistance = 20f;
 
+    public bool IS_DEAD;
+
     // Start is called before the first frame update
     void Start()
     {
+        IS_DEAD = false;
+
         enemyCurrentHP = enemyMaxHP;
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerController = PlayerControllerSingleton.Instance.playerController;
+        playerController = PlayerControllerSingleton.Instance.PlayerCOntroller;
 
         animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
-
+        
         if (player != null)
         {
             agent.SetDestination(player.position);
@@ -48,9 +61,19 @@ public class SkeletonEnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (IS_DEAD)
+        {
+            
+            animator.SetBool("walk", false);
+            animator.SetBool("idle", false);
+            animator.SetBool("atack", false);
+        }
         enemyhpCount.SetText(enemyCurrentHP.ToString() + " / " + enemyMaxHP.ToString());
         enemySliderHP.maxValue = enemyMaxHP;
         enemySliderHP.value = enemyCurrentHP;
+        EnemyNameText.SetText(EnemyName);
+
+
 
         target.transform.rotation = Camera.main.transform.rotation;
 
@@ -64,50 +87,65 @@ public class SkeletonEnemyController : MonoBehaviour
                 playerController = player.GetComponent<PlayerCOntroller>();
             }
         }
-
-        if (distanceToPlayer < maxChaseDistance) // Преслідування гравця
+        if (!IS_DEAD)
         {
-            animator.SetBool("walk", true);
-            animator.SetBool("idle", false);
-            animator.SetBool("atack", false);
-
-            if (distanceToPlayer <= 2)
+            if (distanceToPlayer < maxChaseDistance) // Преслідування гравця
             {
-                animator.SetBool("walk", false);
+                agent.stoppingDistance = 2;
+                animator.SetBool("walk", true);
                 animator.SetBool("idle", false);
-                animator.SetBool("atack", true);
-            }
-            else
-            {
-                agent.SetDestination(player.position);
-            }
-        }
-        else // Ворог занадто далеко від гравця, йде до найближчої базової точки
-        {
-            closestBasePosition = FindClosestBasePosition();
+                animator.SetBool("atack", false);
+                animator.SetBool("death", false);
 
-            if (closestBasePosition != null)
-            {
-                agent.SetDestination(closestBasePosition.position);
-                if (Vector3.Distance(transform.position, closestBasePosition.position) < 5f)
+
+                if (distanceToPlayer <= 2)
                 {
-                    // Ворог досяг найближчої базової точки, почати анімацію бездіяльності
                     animator.SetBool("walk", false);
-                    animator.SetBool("idle", true);
-                    animator.SetBool("atack", false);
+                    animator.SetBool("idle", false);
+                    animator.SetBool("atack", true);
+                    animator.SetBool("death", false);
+
                 }
                 else
                 {
-                    animator.SetBool("walk", true);
-                    animator.SetBool("idle", false);
-                    animator.SetBool("atack", false);
+                    agent.SetDestination(player.position);
                 }
             }
-            else
+            else // Ворог занадто далеко від гравця, йде до найближчої базової точки
             {
-                Debug.LogWarning("Об'єкт з тегом 'Base' не знайдено!");
+                closestBasePosition = FindClosestBasePosition();
+
+                if (closestBasePosition != null)
+                {
+                    agent.SetDestination(closestBasePosition.position);
+                    if (Vector3.Distance(transform.position, closestBasePosition.position) <= 9f)
+                    {
+                        agent.stoppingDistance = 5;
+                        // Ворог досяг найближчої базової точки, почати анімацію бездіяльності
+                        animator.SetBool("walk", false);
+                        animator.SetBool("idle", true);
+                        animator.SetBool("atack", false);
+                        animator.SetBool("death", false);
+
+                    }
+                    else
+                    {
+                        animator.SetBool("walk", true);
+                        animator.SetBool("idle", false);
+                        animator.SetBool("atack", false);
+                        animator.SetBool("death", false);
+
+                    }
+                }
+                else
+                {
+                    Debug.LogWarning("Об'єкт з тегом 'Base' не знайдено!");
+                }
             }
         }
+        
+
+
     }
 
     // Метод для знаходження найближчої базової точки
@@ -134,17 +172,28 @@ public class SkeletonEnemyController : MonoBehaviour
     {
         if (other.CompareTag("PlayerWeapon"))
         {
+            EnemyDamageSourse.PlayOneShot(TakeDamageSound);
             if (playerController != null)
             {
                 enemyCurrentHP -= playerController.playerDamage;
 
                 if (enemyCurrentHP <= 0)
                 {
-                    Debug.Log("Enemy is Died");
+                    if (!IS_DEAD)
+                    {
+                        IS_DEAD = true;
+                        EnemyDamageSourse.PlayOneShot(DeathSound);
 
-                    playerController.playerCurrentXP += XPForKillEnemy;
-                    playerController.playerBalance += 3;
-                    Destroy(gameObject);
+                        animator.SetBool("death", true);
+                        Debug.Log("Enemy is Died");
+
+                        playerController.playerCurrentXP += XPForKillEnemy;
+                        playerController.playerBalance += CointForKillEnemy;
+                        Destroy(gameObject, 2);
+                    }
+
+                    
+
                 }
             }
             else
@@ -152,5 +201,12 @@ public class SkeletonEnemyController : MonoBehaviour
                 Debug.LogWarning("PlayerController not found!");
             }
         }
+    }
+
+
+
+    public void giveDamage()
+    {
+        playerController.currentHP -= enemyDamage;
     }
 }

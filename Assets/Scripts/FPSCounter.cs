@@ -12,8 +12,10 @@ public class FPSCounter : MonoBehaviour
         style = new GUIStyle();
         style.alignment = TextAnchor.UpperLeft;
         style.fontSize = 24;
+        style.normal.textColor = Color.white; // Задаємо білий колір шрифту
         rect = new Rect(10, 10, 200, 50);
     }
+
 
     private void Update()
     {

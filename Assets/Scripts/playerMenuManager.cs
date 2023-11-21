@@ -204,6 +204,7 @@ public class playerMenuManager : MonoBehaviour
     public void mainMenuButton()
     {
         SceneManager.LoadScene(0);
+        //////////////////////////////
 
     }
     public void ResumeButton()

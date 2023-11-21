@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Windows;
 using Input = UnityEngine.Input;
 
 public class PlayerCOntroller : MonoBehaviour
@@ -120,21 +116,6 @@ public class PlayerCOntroller : MonoBehaviour
                 }
             }
         }
-
-
-
-
-
-        //if (Input.GetKeyDown(KeyCode.Mouse0))
-        //{
-        //    animator.SetBool("atack", true);
-        //    animator.SetBool("idle", false);
-        //}
-        //else
-        //{
-        //    animator.SetBool("atack", false);
-        //    animator.SetBool("idle", true);
-        //}
 
 
         if (Input.GetKeyDown(KeyCode.X))

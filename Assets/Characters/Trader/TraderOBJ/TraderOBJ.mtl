@@ -1,0 +1,86 @@
+# Exported from Fuse 1.3.0
+
+newmtl Beard
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd TraderOBJ_Beard_diffuse.png
+map_Ks TraderOBJ_Beard_specular.png
+bump TraderOBJ_Beard_normal.png
+map_Ns TraderOBJ_Beard_gloss.png
+
+newmtl Shoes
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd TraderOBJ_Shoes_diffuse.png
+map_Ks TraderOBJ_Shoes_specular.png
+bump TraderOBJ_Shoes_normal.png
+map_Ns TraderOBJ_Shoes_gloss.png
+
+newmtl Moustache
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd TraderOBJ_Moustache_diffuse.png
+map_Ks TraderOBJ_Moustache_specular.png
+bump TraderOBJ_Moustache_normal.png
+map_Ns TraderOBJ_Moustache_gloss.png
+
+newmtl Hair
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd TraderOBJ_Hair_diffuse.png
+map_Ks TraderOBJ_Hair_specular.png
+bump TraderOBJ_Hair_normal.png
+map_Ns TraderOBJ_Hair_gloss.png
+
+newmtl Top
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd TraderOBJ_Top_diffuse.png
+map_Ks TraderOBJ_Top_specular.png
+bump TraderOBJ_Top_normal.png
+map_Ns TraderOBJ_Top_gloss.png
+
+newmtl Bottom
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd TraderOBJ_Bottom_diffuse.png
+map_Ks TraderOBJ_Bottom_specular.png
+bump TraderOBJ_Bottom_normal.png
+map_Ns TraderOBJ_Bottom_gloss.png
+
+newmtl Body
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd TraderOBJ_Body_diffuse.png
+map_Ks TraderOBJ_Body_specular.png
+bump TraderOBJ_Body_normal.png
+map_Ns TraderOBJ_Body_gloss.png
+

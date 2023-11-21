@@ -4,12 +4,12 @@ using UnityEngine;
 public class EnemySpawnerController : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    public int maxEnemies = 4;
-    public int enemiesToSpawn = 5;
-    public float spawnRadius = 20f;
-    public float spawnInterval = 5f;
+    public int maxEnemies;
+    public int enemiesToSpawn;
+    public float spawnRadius;
+    public float spawnInterval;
 
-    private int currentEnemyCount = 0;
+    private int currentEnemyCount;
 
     private void Start()
     {

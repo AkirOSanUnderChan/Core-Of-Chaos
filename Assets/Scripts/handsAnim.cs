@@ -7,11 +7,16 @@ public class handsAnim : MonoBehaviour
     private playerMenuManager playerMenuManager;
     public Animator animator;
 
+    public int atackIndex;
+    static bool isBlocked;
     // Start is called before the first frame update
     void Start()
     {
+        atackIndex = 0;
+        isBlocked = false;
         animator = GetComponent<Animator>();
         playerMenuManager = PlayerControllerSingleton.Instance.playerMenuManager;
+        
 
     }
 
@@ -20,6 +25,15 @@ public class handsAnim : MonoBehaviour
     {
         if (!playerMenuManager.playerInWindow)
         {
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                if (!isBlocked)
+                {
+
+                }
+            }
+
+
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Debug.Log("“и не в в≥кн≥ ≥ ти зараз вдарив");
