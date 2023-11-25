@@ -8,6 +8,8 @@ public class PlayerCOntroller : MonoBehaviour
     public int playerBalance = 0;
 
     private float nextRegenTime;
+    public float maxDash;
+
 
 
     public GameObject TraderWindow;
@@ -19,10 +21,15 @@ public class PlayerCOntroller : MonoBehaviour
 
     public int maxHP = 20;
     public int currentHP;
-
-    public int playerDamage;
     public int hpRegenAmount = 0;
     public float hpRegenInterval = 10f;
+
+    public float maxEnergi;
+    public float currentEnergi;
+    public float energiRegenSpeed;
+
+    public int playerDamage;
+
 
     public int playerCurrentXP;
     public float playerXPToLVLUP;
@@ -86,6 +93,14 @@ public class PlayerCOntroller : MonoBehaviour
         lvlUpdate();
 
 
+        if (currentEnergi < maxEnergi)
+        {
+            currentEnergi += 10 * energiRegenSpeed * Time.deltaTime;
+            if (currentEnergi > maxEnergi)
+            {
+                currentEnergi = maxEnergi;
+            }
+        }
 
 
 
@@ -169,7 +184,6 @@ public class PlayerCOntroller : MonoBehaviour
         {
             // Додайте кількість HP для відновлення
             currentHP += hpRegenAmount;
-
             // Перевірте, чи не перевищуємо максимальний HP
             if (currentHP > maxHP)
             {

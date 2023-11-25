@@ -333,7 +333,18 @@ MonoBehaviour:
 
 
     ~The distance at which it is allowed
-    to interact with NPCs has been changed'
+    to interact with NPCs has been changed
+
+
+    ~The intelligence of the skeletons
+    has been slightly changed.
+
+
+    ~Improve optimization.
+
+
+    +Added skeleton
+    death animation and sound.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
   m_sharedMaterial: {fileID: 1041664412853097231, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
@@ -360,7 +371,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 47.8
+  m_fontSize: 41.15
   m_fontSizeBase: 49.37
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -396,7 +407,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -822.04474, y: -339.7478, z: -834.35315, w: -483.56186}
+  m_margin: {x: -822.04474, y: -375.01788, z: -834.35315, w: -545.955}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

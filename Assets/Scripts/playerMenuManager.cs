@@ -4,11 +4,14 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class playerMenuManager : MonoBehaviour
 {
     public bool playerInWindow = false;
 
+    public bool debugMod = false;
+    public GameObject Graphy;
 
     public TextMeshProUGUI UpgradePoints_UI;
 
@@ -23,7 +26,8 @@ public class playerMenuManager : MonoBehaviour
     public TextMeshProUGUI playerBalanceInScreen_UI;
 
 
-
+    public TextMeshProUGUI playerEnergi_UI;
+    public Slider playerEnergiSlider_UI;
 
     public PlayerCOntroller ggControll;
     public playerInventory playerInventory;
@@ -114,7 +118,10 @@ public class playerMenuManager : MonoBehaviour
 
         }
 
-
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            DebugMod();
+        }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -216,7 +223,11 @@ public class playerMenuManager : MonoBehaviour
 
     }
 
-
+    public void DebugMod()
+    {
+        debugMod = !debugMod;
+        Graphy.SetActive(debugMod);
+    }
 
     public void menuGuiUpdate()
     {
@@ -228,6 +239,13 @@ public class playerMenuManager : MonoBehaviour
         potionCount_UI.SetText(playerInventory.potionCount.ToString());
         playerBalance_UI.SetText("Your balance: " + ggControll.playerBalance.ToString());
         playerBalanceInScreen_UI.SetText("Balance: " + ggControll.playerBalance.ToString());
+
+
+
+        playerEnergi_UI.SetText(ggControll.currentEnergi.ToString() + " / " + ggControll.maxEnergi.ToString());
+
+        playerEnergiSlider_UI.maxValue = ggControll.maxEnergi;
+        playerEnergiSlider_UI.value = ggControll.currentEnergi;
 
     }
 }

@@ -8,6 +8,7 @@ public class PlayerMovemant : MonoBehaviour
 {
 
 
+    public Camera mainCamera;
 
     public PlayerCOntroller ggControll;
 
@@ -102,7 +103,22 @@ public class PlayerMovemant : MonoBehaviour
         else
             rb.drag = 0;
 
-
+        if (ggControll.currentEnergi >= 10)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                Dash(KeyCode.E);
+            }
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Dash(KeyCode.Q);
+            }
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Dash(KeyCode.R);
+            }
+        }
+        
 
 
         Vector3 moveDirectionFlat = new Vector3(moveDirection.x, 0f, moveDirection.z).normalized;
@@ -266,5 +282,41 @@ public class PlayerMovemant : MonoBehaviour
             playerSourse.PlayOneShot(takeDamageSound);
             ggControll.currentHP -= 1;
         }
+    }
+
+    public void Dash(KeyCode key)
+    {
+        Vector3 rayDir = mainCamera.transform.forward;
+        if (key == KeyCode.E)
+        {
+            rayDir = mainCamera.transform.forward;
+        }
+        else if (key == KeyCode.Q)
+        {
+            rayDir = -mainCamera.transform.right;
+            
+        }
+        else if (key == KeyCode.R)
+        {
+            rayDir = mainCamera.transform.right;
+
+        }
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, rayDir, out hit, ggControll.maxDash))
+        {
+            Debug.Log("Райкаст є");
+
+            Vector3 tpPoint = new Vector3(hit.point.x, hit.point.y + 1f, hit.point.z);
+            Debug.Log(tpPoint);
+
+            transform.position = tpPoint;
+        }
+        else
+        {
+            Vector3 endTeleportPoint = transform.position + rayDir * ggControll.maxDash;
+            transform.position = endTeleportPoint;
+        }
+        ggControll.currentEnergi -= 10;
     }
 }

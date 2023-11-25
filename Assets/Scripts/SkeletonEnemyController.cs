@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 
 public class SkeletonEnemyController : MonoBehaviour
 {
@@ -36,11 +37,15 @@ public class SkeletonEnemyController : MonoBehaviour
 
     public bool IS_DEAD;
 
+    CapsuleCollider enemyColider;
+    BoxCollider enemySwordColider;
+
     // Start is called before the first frame update
     void Start()
     {
         IS_DEAD = false;
-
+        enemyColider = GetComponent<CapsuleCollider>();
+        enemySwordColider = GetComponentInChildren<BoxCollider>();
         enemyCurrentHP = enemyMaxHP;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         playerController = PlayerControllerSingleton.Instance.PlayerCOntroller;
@@ -63,7 +68,8 @@ public class SkeletonEnemyController : MonoBehaviour
     {
         if (IS_DEAD)
         {
-            
+            enemySwordColider.enabled = false;
+            enemyColider.enabled = false;
             animator.SetBool("walk", false);
             animator.SetBool("idle", false);
             animator.SetBool("atack", false);
@@ -91,7 +97,7 @@ public class SkeletonEnemyController : MonoBehaviour
         {
             if (distanceToPlayer < maxChaseDistance) // Преслідування гравця
             {
-                agent.stoppingDistance = 2;
+                agent.stoppingDistance = 1.5f;
                 animator.SetBool("walk", true);
                 animator.SetBool("idle", false);
                 animator.SetBool("atack", false);
