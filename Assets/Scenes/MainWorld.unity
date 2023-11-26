@@ -32028,6 +32028,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBalance: 0
   maxDash: 5
+  smoothDashSpeed: 10
+  canDash: 1
+  dashCooldown: 0.5
   TraderWindow: {fileID: 57406882}
   playerCamera: {fileID: 963194228}
   interactDistance: 5

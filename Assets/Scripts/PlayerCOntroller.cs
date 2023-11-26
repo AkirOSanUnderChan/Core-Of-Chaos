@@ -9,7 +9,9 @@ public class PlayerCOntroller : MonoBehaviour
 
     private float nextRegenTime;
     public float maxDash;
-
+    public float smoothDashSpeed;
+    public bool canDash = true;
+    public float dashCooldown; // Затримка між використанням дешу в секундах
 
 
     public GameObject TraderWindow;

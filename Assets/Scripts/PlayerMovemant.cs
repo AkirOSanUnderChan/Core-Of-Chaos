@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Net;
 
 public class PlayerMovemant : MonoBehaviour
 {
+
+    
+
 
 
     public Camera mainCamera;
@@ -36,8 +40,8 @@ public class PlayerMovemant : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode sprintKey = KeyCode.LeftShift;
-    public KeyCode crouchKey = KeyCode.LeftControl;
+    public KeyCode sprintKey = KeyCode.LeftControl;
+    public KeyCode crouchKey = KeyCode.C;
 
     [Header("Ground Check")]
     public float playerHeight;
@@ -88,7 +92,16 @@ public class PlayerMovemant : MonoBehaviour
 
     private void Update()
     {
-        
+
+        bool isWPressed = Input.GetKey(KeyCode.W);
+        bool isAPressed = Input.GetKey(KeyCode.A);
+        bool isSPressed = Input.GetKey(KeyCode.S);
+        bool isDPressed = Input.GetKey(KeyCode.D);
+        bool isDashKeyPressed = Input.GetKey(KeyCode.LeftShift);
+
+
+
+
         //handsAnim.isBlocked = false;
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround);
@@ -103,23 +116,38 @@ public class PlayerMovemant : MonoBehaviour
         else
             rb.drag = 0;
 
-        if (ggControll.currentEnergi >= 10)
+
+        if (isDashKeyPressed && ggControll.canDash)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (isDashKeyPressed)
             {
-                Dash(KeyCode.E);
-            }
-            if (Input.GetKeyDown(KeyCode.Q))
-            {
-                Dash(KeyCode.Q);
-            }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                Dash(KeyCode.R);
+                // Якщо натиснуто лівий Ctrl, викликаємо функцію Dash з обраного напрямку
+                Vector3 dashDirection = Vector3.zero;
+
+                if (isWPressed)
+                {
+                    dashDirection += mainCamera.transform.forward;
+                }
+                if (isAPressed)
+                {
+                    dashDirection -= mainCamera.transform.right;
+                }
+                if (isSPressed)
+                {
+                    dashDirection -= mainCamera.transform.forward;
+                }
+                if (isDPressed)
+                {
+                    dashDirection += mainCamera.transform.right;
+                }
+
+                // Якщо обрано хоча б один напрямок, викликаємо функцію Dash
+                if (dashDirection != Vector3.zero)
+                {
+                    StartCoroutine(DashWithCooldown(dashDirection));
+                }
             }
         }
-        
-
 
         Vector3 moveDirectionFlat = new Vector3(moveDirection.x, 0f, moveDirection.z).normalized;
     }
@@ -284,39 +312,52 @@ public class PlayerMovemant : MonoBehaviour
         }
     }
 
-    public void Dash(KeyCode key)
+    IEnumerator DashWithCooldown(Vector3 dashDirection)
     {
-        Vector3 rayDir = mainCamera.transform.forward;
-        if (key == KeyCode.E)
-        {
-            rayDir = mainCamera.transform.forward;
-        }
-        else if (key == KeyCode.Q)
-        {
-            rayDir = -mainCamera.transform.right;
-            
-        }
-        else if (key == KeyCode.R)
-        {
-            rayDir = mainCamera.transform.right;
+        ggControll.canDash = false; // Забороняємо нові виклики "дешу" до закінчення затримки
 
-        }
+        // Викликаємо функцію Dash
+        Dash(dashDirection);
 
+        // Чекаємо затримку перед тим, як дозволити новий виклик "дешу"
+        yield return new WaitForSeconds(ggControll.dashCooldown);
+
+        ggControll.canDash = true; // Дозволяємо нові виклики "дешу"
+    }
+
+
+
+    public void Dash(Vector3 dashDirection)
+    {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, rayDir, out hit, ggControll.maxDash))
+        if (Physics.Raycast(transform.position, dashDirection, out hit, ggControll.maxDash))
         {
-            Debug.Log("Райкаст є");
-
             Vector3 tpPoint = new Vector3(hit.point.x, hit.point.y + 1f, hit.point.z);
-            Debug.Log(tpPoint);
-
-            transform.position = tpPoint;
+            StartCoroutine(SmoothDashMovement(tpPoint));
+            ggControll.currentEnergi -= 10;
         }
         else
         {
-            Vector3 endTeleportPoint = transform.position + rayDir * ggControll.maxDash;
-            transform.position = endTeleportPoint;
+            Vector3 endTeleportPoint = transform.position + dashDirection * ggControll.maxDash;
+            StartCoroutine(SmoothDashMovement(endTeleportPoint));
+            ggControll.currentEnergi -= 10;
         }
-        ggControll.currentEnergi -= 10;
+    }
+
+    IEnumerator SmoothDashMovement(Vector3 targetPosition)
+    {
+        float elapsedTime = 0f;
+        Vector3 startingPosition = transform.position;
+
+        while (elapsedTime < 1f)
+        {
+            transform.position = Vector3.Lerp(startingPosition, targetPosition, elapsedTime);
+            elapsedTime += Time.deltaTime * ggControll.smoothDashSpeed;
+            yield return null;
+        }
+
+        // Опціонально:
+        // Виконуємо додаткові дії після закінчення "деша".
+        yield return null;
     }
 }

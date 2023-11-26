@@ -242,7 +242,7 @@ public class playerMenuManager : MonoBehaviour
 
 
 
-        playerEnergi_UI.SetText(ggControll.currentEnergi.ToString() + " / " + ggControll.maxEnergi.ToString());
+        playerEnergi_UI.SetText($"{ggControll.currentEnergi:F0}/{ggControll.maxEnergi:F0}");
 
         playerEnergiSlider_UI.maxValue = ggControll.maxEnergi;
         playerEnergiSlider_UI.value = ggControll.currentEnergi;
