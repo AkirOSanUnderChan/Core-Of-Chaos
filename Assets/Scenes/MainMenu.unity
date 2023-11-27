@@ -316,35 +316,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '+Skeletons have levels that determine the reward for killing them.
-
-
-    +Added
-    level 2 skeleton. It looks like a normal skeleton except for the purple fire
-    inside it. In all stats, it outperforms a level 1 skeleton.
-
-
-    +Added sounds:
-    The sound of an enemy hit, the sound of taking damage.
-
-
-    ~Changed the skybox
-    and the general atmosphere of the game.
-
-
-    ~The distance at which it is allowed
-    to interact with NPCs has been changed
-
-
-    ~The intelligence of the skeletons
-    has been slightly changed.
-
-
-    ~Improve optimization.
-
-
-    +Added skeleton
-    death animation and sound.'
+  m_text: "+ Added Dash : With Dash, you can move very quickly over short distances.
+    \nTo make a dash, you need to select the direction using WASD, and press Left
+    Shift. Dash will use up your Energy (Yellow scale under the HP scale).\n\n+ Added
+    a debug menu for the F3 key.\n\n~ You will now not be able to get hurt by a dead
+    skeleton's sword."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
   m_sharedMaterial: {fileID: 1041664412853097231, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
@@ -371,7 +347,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 41.15
+  m_fontSize: 64.9
   m_fontSizeBase: 49.37
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1940,7 +1916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Changes in \n0.3.0a\n"
+  m_text: "Changes in \n0.3.1a\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
   m_sharedMaterial: {fileID: 1041664412853097231, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}

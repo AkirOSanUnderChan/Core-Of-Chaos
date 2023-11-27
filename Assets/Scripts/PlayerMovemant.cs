@@ -116,8 +116,8 @@ public class PlayerMovemant : MonoBehaviour
         else
             rb.drag = 0;
 
-
-        if (isDashKeyPressed && ggControll.canDash)
+        
+        if (isDashKeyPressed && ggControll.canDash && ggControll.currentEnergi > ggControll.needEnergiForDash)
         {
             if (isDashKeyPressed)
             {
@@ -334,13 +334,15 @@ public class PlayerMovemant : MonoBehaviour
         {
             Vector3 tpPoint = new Vector3(hit.point.x, hit.point.y + 1f, hit.point.z);
             StartCoroutine(SmoothDashMovement(tpPoint));
-            ggControll.currentEnergi -= 10;
+            ggControll.currentEnergi -= ggControll.needEnergiForDash;
         }
         else
         {
             Vector3 endTeleportPoint = transform.position + dashDirection * ggControll.maxDash;
+            endTeleportPoint.y = Mathf.Max(transform.position.y, endTeleportPoint.y + 1);
+
             StartCoroutine(SmoothDashMovement(endTeleportPoint));
-            ggControll.currentEnergi -= 10;
+            ggControll.currentEnergi -= ggControll.needEnergiForDash;
         }
     }
 

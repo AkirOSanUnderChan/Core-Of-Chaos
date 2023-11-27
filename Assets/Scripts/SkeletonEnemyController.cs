@@ -193,7 +193,7 @@ public class SkeletonEnemyController : MonoBehaviour
                         animator.SetBool("death", true);
                         Debug.Log("Enemy is Died");
 
-                        playerController.playerCurrentXP += XPForKillEnemy;
+                        playerController.ClaimExperience(XPForKillEnemy);
                         playerController.playerBalance += CointForKillEnemy;
                         Destroy(gameObject, 2);
                     }

@@ -17238,8 +17238,8 @@ MonoBehaviour:
   crouchSpeed: 3
   crouchYScale: 1
   jumpKey: 32
-  sprintKey: 304
-  crouchKey: 306
+  sprintKey: 306
+  crouchKey: 99
   playerHeight: 2
   whatIsGround:
     serializedVersion: 2
@@ -32041,7 +32041,8 @@ MonoBehaviour:
   hpRegenInterval: 0.1
   maxEnergi: 100
   currentEnergi: 100
-  energiRegenSpeed: 1
+  energiRegenSpeed: 0.5
+  needEnergiForDash: 30
   playerDamage: 0
   playerCurrentXP: 0
   playerXPToLVLUP: 0

@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,6 +30,7 @@ public class PlayerCOntroller : MonoBehaviour
     public float maxEnergi;
     public float currentEnergi;
     public float energiRegenSpeed;
+    public float needEnergiForDash;
 
     public int playerDamage;
 
@@ -92,7 +94,6 @@ public class PlayerCOntroller : MonoBehaviour
         }
         GuiUpdate();
         inputUpdate();
-        lvlUpdate();
 
 
         if (currentEnergi < maxEnergi)
@@ -194,9 +195,41 @@ public class PlayerCOntroller : MonoBehaviour
         }
     }
 
+    public void ClaimExperience(int droppedXP)
+    {
+        int playerRemainsToLVLUP = Convert.ToInt32(playerXPToLVLUP) - playerCurrentXP;
+
+        if (droppedXP >= playerRemainsToLVLUP)
+        {
+            
+            playerLVL++;
+            playerUpgradeScore++;
+            droppedXP -= playerRemainsToLVLUP;
+            
+            playerCurrentXP = 0;
+            playerXPToLVLUP = CalculateXPToLevelUp(); 
+            
+            ClaimExperience(droppedXP);
+        }
+        else
+        {
+            playerCurrentXP += droppedXP;
+        }
+    }
+
+    public float CalculateXPToLevelUp()
+    {
+        playerXPToLVLUP = Mathf.Round(playerXPToLVLUP * 1.2f);
+        return playerXPToLVLUP;
+
+    }
+
+    // Приклад виклику функції:
+    // int droppedXP = // Ваша кількість отриманого досвіду
+    // player.ClaimExperience(droppedXP);
 
 
-    
+
 
 
 
