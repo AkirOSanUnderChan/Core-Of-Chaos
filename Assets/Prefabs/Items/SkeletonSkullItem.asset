@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f90139b35f9d3c45b719337b89bb014, type: 3}
+  m_Name: SkeletonSkullItem
+  m_EditorClassIdentifier: 
+  itemName: Skeleton skull
+  itemType: Trophy
+  description: The skull of a murdered skeleton. it can be used to resurrect an ancient
+    undead warrior
+  itemImage: {fileID: 21300000, guid: f656fff644bbeb0428520b13ba5fade5, type: 3}
+  stackable: 1
+  maxStack: 10
+  currentStack: 5

@@ -21,6 +21,7 @@ public class playerMenuManager : MonoBehaviour
     public TextMeshProUGUI RegenerationStatus_Menu;
     public GameObject DeathMenu;
     public GameObject PauseMenu;
+    public GameObject InventoryObject;
     public TextMeshProUGUI potionCount_UI;
     public TextMeshProUGUI playerBalance_UI;
     public TextMeshProUGUI playerBalanceInScreen_UI;
@@ -93,6 +94,8 @@ public class playerMenuManager : MonoBehaviour
                     PauseMenu.SetActive(false);
                     playerInWindow = false;
                     playerInPause = false;
+                    InventoryObject.SetActive(false);
+
 
                 }
                 else
@@ -131,6 +134,30 @@ public class playerMenuManager : MonoBehaviour
                 {
                     if (PM_IsActive)
                     {
+                        InventoryObject.SetActive(false);
+                        PM_IsActive = false;
+                        playerInWindow = false;
+                    }
+                    else if (!PM_IsActive)
+                    {
+                        InventoryObject.SetActive(true);
+                        PM_IsActive = true;
+                        playerInWindow = true;
+                    }
+                }
+                
+            }
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (!ggControll.playerIsDead)
+            {
+                if (!playerInPause)
+                {
+                    if (PM_IsActive)
+                    {
                         playerMenu.SetActive(false);
                         PM_IsActive = false;
                         playerInWindow = false;
@@ -142,10 +169,10 @@ public class playerMenuManager : MonoBehaviour
                         playerInWindow = true;
                     }
                 }
-                
+
             }
-            
         }
+
     }
     public void PlayerInGame()
     {
