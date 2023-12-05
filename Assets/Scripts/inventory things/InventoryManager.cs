@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
+using System.Reflection;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -15,10 +15,11 @@ public class InventoryManager : MonoBehaviour
     public Image itemDescriptionImage;
     public TextMeshProUGUI itemDescriptionName;
     public TextMeshProUGUI itemDescription;
+    public TextMeshProUGUI itemDescriptionType;
 
     public bool toolTipPanelOn;
 
-
+    
 
     public static InventoryManager instance;
 
@@ -58,6 +59,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+
+
+
     public void AddItem(Item item, int currentStack)
     {
         if (item.stackable)
@@ -85,6 +89,36 @@ public class InventoryManager : MonoBehaviour
 
 
 
+    public bool DeleteTheSpecifiedItem(Item item, int amountToRemove)
+    {
+        int itemDeleted = 0;
+        for (int i = 0; itemDeleted < inventoryItems.Count; i++)
+        {
+            if (inventoryItems[i].UniqueName == item.itemName)
+            {
+                if (inventoryItems[i].StackCount >= amountToRemove)
+                {
+                    inventoryItems[i].StackCount -= amountToRemove;
+                    itemDeleted++;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
+
     public void RemoveItem(int index)
     {
         if (index >= 0 && index < inventoryItems.Count)
@@ -94,7 +128,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void UpdateInventoryUI()
+    public void UpdateInventoryUI()
     {
 
         
@@ -149,6 +183,8 @@ public class InventoryManager : MonoBehaviour
         var item = allItems.Find(itemSO => itemSO.itemName == inventoryItems[index].UniqueName);
         itemDescriptionName.SetText(item.itemName);
         itemDescription.SetText(item.description);
+        itemDescriptionType.SetText(item.itemType);
+        itemDescriptionType.color = item.itemTypeColor;
         itemDescriptionImage.sprite = item.itemImage;
 
     }

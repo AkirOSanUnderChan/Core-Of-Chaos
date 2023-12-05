@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.UI;
 using Unity.VisualScripting;
 
+
 public class SkeletonEnemyController : MonoBehaviour
 {
     private PlayerCOntroller playerController;
@@ -15,6 +16,7 @@ public class SkeletonEnemyController : MonoBehaviour
     public string EnemyName;
 
     public int XPForKillEnemy;
+    public Item coinsTypeForKillEnemy;
     public int CointForKillEnemy;
     public TextMeshProUGUI enemyhpCount;
     public Slider enemySliderHP;
@@ -27,6 +29,10 @@ public class SkeletonEnemyController : MonoBehaviour
     public int enemyDamage;
     public int enemyMaxHP;
     public int enemyCurrentHP;
+
+    public Item enemyDrop;
+    public int enemyDropAmount;
+    public float enemyDropChance;
 
     Animator animator;
     private Transform player;
@@ -187,14 +193,22 @@ public class SkeletonEnemyController : MonoBehaviour
                 {
                     if (!IS_DEAD)
                     {
+
                         IS_DEAD = true;
                         EnemyDamageSourse.PlayOneShot(DeathSound);
+
+                        float randomValue = Random.Range(0, 100);
+                        if (randomValue <= enemyDropChance)
+                        {
+                            InventoryManager.instance.AddItem(enemyDrop, enemyDropAmount);
+                        }
+ 
 
                         animator.SetBool("death", true);
                         Debug.Log("Enemy is Died");
 
                         playerController.ClaimExperience(XPForKillEnemy);
-                        playerController.playerBalance += CointForKillEnemy;
+                        InventoryManager.instance.AddItem(coinsTypeForKillEnemy, CointForKillEnemy);
                         Destroy(gameObject, 2);
                     }
 

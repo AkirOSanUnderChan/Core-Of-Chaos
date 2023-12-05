@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f90139b35f9d3c45b719337b89bb014, type: 3}
-  m_Name: PotionOfhealItem
+  m_Name: GoldCoin
   m_EditorClassIdentifier: 
-  itemName: Healing potion
-  itemType: Alchemy
-  itemTypeColor: {r: 0.01476226, g: 0.6981132, b: 0, a: 1}
-  description: After using this potion, you will instantly recover 20 HP
-  itemImage: {fileID: 21300000, guid: 4703661f35d49a047ad510954f2fb364, type: 3}
+  itemName: Gold Coin
+  itemType: Currency
+  itemTypeColor: {r: 1, g: 0.81786364, b: 0, a: 1}
+  description: With this item you can buy things from NPCs
+  itemImage: {fileID: 21300000, guid: 97197fc9b0f90b9419415a42133b50cc, type: 3}
   stackable: 1
-  maxStack: 30
+  maxStack: 10000

@@ -2543,6 +2543,7 @@ MonoBehaviour:
   target: {fileID: 5342846242505883446}
   EnemyName: lvl 2 skeleton
   XPForKillEnemy: 40
+  coinsTypeForKillEnemy: {fileID: 11400000, guid: 185c8cbd96f84b1428f011c06d5fb698, type: 2}
   CointForKillEnemy: 5
   enemyhpCount: {fileID: 9181156732032058635}
   enemySliderHP: {fileID: 4959228907754196993}
@@ -2553,6 +2554,9 @@ MonoBehaviour:
   enemyDamage: 10
   enemyMaxHP: 40
   enemyCurrentHP: 0
+  enemyDrop: {fileID: 0}
+  enemyDropAmount: 1
+  enemyDropChance: 50
   distanceToPlayer: 0
   maxChaseDistance: 20
   IS_DEAD: 0

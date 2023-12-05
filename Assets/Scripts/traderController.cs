@@ -31,7 +31,6 @@ public class traderController : MonoBehaviour
         {
             InteractText.SetActive(true);
 
-            //GUI.Label(new Rect(Screen.width / 2 - 75, Screen.height - 50, 150, 30), "Press F to interact");
         }
         else
         {

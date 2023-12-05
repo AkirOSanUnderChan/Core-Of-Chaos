@@ -6,6 +6,8 @@ using Input = UnityEngine.Input;
 
 public class PlayerCOntroller : MonoBehaviour
 {
+    InventoryManager inventoryManager;
+
     public int playerBalance = 0;
 
     private float nextRegenTime;
@@ -61,6 +63,10 @@ public class PlayerCOntroller : MonoBehaviour
 
     private void Start()
     {
+        //inventoryManager = inventoryManager<InventoryManager>;
+        QualitySettings.vSyncCount = 0;
+
+
         playerBalance = 0;
 
         TraderWindow.SetActive(false);
@@ -80,6 +86,12 @@ public class PlayerCOntroller : MonoBehaviour
 
     void Update()
     {
+
+        if (Input.GetKeyDown(KeyCode.Plus))
+        {
+            
+        }
+
         if (Time.time >= nextRegenTime)
         {
             RegenerateHP();

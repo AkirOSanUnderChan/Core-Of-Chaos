@@ -7,8 +7,8 @@ public sealed class ItemCell : MonoBehaviour
 {
     public event Action<ItemCell, int> OnClicked;
 
-    [SerializeField]
-    private string _displayStackFormat = "Stack: {0}";
+    //[SerializeField]
+    //private string _displayStackFormat = "Stack: {0}";
 
 
     [SerializeField]

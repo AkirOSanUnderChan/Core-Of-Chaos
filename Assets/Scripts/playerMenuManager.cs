@@ -8,6 +8,10 @@ using UnityEngine.UI;
 
 public class playerMenuManager : MonoBehaviour
 {
+    InventoryManager inventoryManager; // Додайте це поле
+
+    public Item goldCoinItem;
+    public Item potionItem;
     public bool playerInWindow = false;
 
     public bool debugMod = false;
@@ -38,6 +42,8 @@ public class playerMenuManager : MonoBehaviour
     public bool isPaused = false;
     public bool playerInPause = false;
 
+    
+
 
 
     private void Start()
@@ -46,6 +52,8 @@ public class playerMenuManager : MonoBehaviour
         playerInPause = false;
 
         DeathMenu.SetActive(false);
+        inventoryManager = GetComponent<InventoryManager>();
+
         ggControll = GetComponent<PlayerCOntroller>();
         playerInventory = GetComponent<playerInventory>();
 
@@ -147,7 +155,6 @@ public class playerMenuManager : MonoBehaviour
                 }
                 
             }
-            
         }
 
         if (Input.GetKeyDown(KeyCode.I))
@@ -178,24 +185,28 @@ public class playerMenuManager : MonoBehaviour
     {
         playerInWindow = false;
     }
-
     public void buyHealPotion()
     {
-        if (ggControll.playerBalance >= 5)
-        {
-            ggControll.playerBalance -= 5;
-            playerInventory.potionCount ++;
-        }
+        bool canBuy = InventoryManager.instance.DeleteTheSpecifiedItem(goldCoinItem, 5);
+        if (canBuy)
+            InventoryManager.instance.AddItem(potionItem, 1);
+        else
+            Debug.Log("У вас не вистачає грошей, щоб купити цей предмет "+ potionItem.itemName + " Ціна якого " + 5 + " " + goldCoinItem.itemName);
     }
 
 
     public void maxHealthUpgrade()
     {
-        if (ggControll.playerUpgradeScore >= 1)
-        {
-            ggControll.playerUpgradeScore --;
-            ggControll.maxHP++;
-        }
+
+        
+        //if (ggControll.playerUpgradeScore >= 1)
+        //{
+        //    ggControll.playerUpgradeScore--;
+        //    ggControll.maxHP++;
+        //}
+
+
+
     }
     //public void SpeedUpgrade()
     //{
