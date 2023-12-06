@@ -12,14 +12,14 @@ public class ItemPickUp : MonoBehaviour
     public delegate void MouseExitAction();
     public event MouseExitAction onMouseExitAction;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            InventoryManager.instance.AddItem(item, currentStack);
-            Destroy(gameObject);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        InventoryManager.instance.AddItem(item, currentStack);
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     private void OnMouseEnter()
     {
@@ -42,5 +42,11 @@ public class ItemPickUp : MonoBehaviour
     public bool IsHovered()
     {
         return isHovered;
+    }
+
+    public void PickupThisItem()
+    {
+        InventoryManager.instance.AddItem(item, currentStack);
+        Destroy(gameObject);
     }
 }

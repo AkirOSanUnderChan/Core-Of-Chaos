@@ -14,6 +14,9 @@ public class playerMenuManager : MonoBehaviour
     public Item potionItem;
     public bool playerInWindow = false;
 
+    public AudioSource menuAudioSourse;
+    public AudioClip succsecfullBuy;
+
     public bool debugMod = false;
     public GameObject Graphy;
 
@@ -189,9 +192,12 @@ public class playerMenuManager : MonoBehaviour
     {
         bool canBuy = InventoryManager.instance.DeleteTheSpecifiedItem(goldCoinItem, 5);
         if (canBuy)
+        {
+            menuAudioSourse.PlayOneShot(succsecfullBuy);
             InventoryManager.instance.AddItem(potionItem, 1);
+        }
         else
-            Debug.Log("У вас не вистачає грошей, щоб купити цей предмет "+ potionItem.itemName + " Ціна якого " + 5 + " " + goldCoinItem.itemName);
+            Debug.Log("У вас не вистачає грошей, щоб купити цей предмет " + potionItem.itemName + " Ціна якого " + 5 + " " + goldCoinItem.itemName);
     }
 
 

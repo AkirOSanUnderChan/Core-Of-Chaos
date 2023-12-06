@@ -16,6 +16,7 @@ public class PlayerCOntroller : MonoBehaviour
     public bool canDash = true;
     public float dashCooldown; // Затримка між використанням дешу в секундах
 
+    public TextMeshProUGUI pickupText; // UI-елемент для відображення тексту з інструкцією
 
     public GameObject TraderWindow;
 
@@ -134,17 +135,51 @@ public class PlayerCOntroller : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Ray ray = new Ray(playerCamera.position, playerCamera.forward);
-            RaycastHit hit;
+            Ray TradeRay = new Ray(playerCamera.position, playerCamera.forward);
+            RaycastHit TradeHit;
 
-            if (Physics.Raycast(ray, out hit, interactDistance))
+            if (Physics.Raycast(TradeRay, out TradeHit, interactDistance))
             {
-                if (hit.collider.CompareTag("NPC"))
+                if (TradeHit.collider.CompareTag("NPC"))
                 {
                     TraderWindow.SetActive(true);
                     playerMenuManager.playerInWindow = true;
                 }
             }
+        }
+
+        Ray ray = new Ray(playerCamera.position, playerCamera.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 5))
+        {
+            // Перевіряємо, чи торкнувся райкаст якого-небудь об'єкта
+            if (hit.collider != null)
+            {
+                // Перевіряємо, чи цей об'єкт має компонент інвентарю (може бути вашим скриптом)
+                ItemPickUp itemPickUp = hit.collider.GetComponent<ItemPickUp>();
+
+                if (itemPickUp != null)
+                {
+                    // Відображення інструкції для збору предмету
+                    pickupText.text = "Press F to pick up the " + itemPickUp.item.itemName + " " + itemPickUp.currentStack + "x";
+
+                    if (Input.GetKeyDown(KeyCode.F))
+                    {
+                        itemPickUp.PickupThisItem();
+                    }
+                }
+                else
+                {
+                    // Якщо об'єкт не має компонента інвентарю, приховати текст
+                    pickupText.text = "";
+                }
+            }
+        }
+        else
+        {
+            // Якщо не торкнуто об'єкт, також приховати текст
+            pickupText.text = "";
         }
 
 

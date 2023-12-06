@@ -2554,9 +2554,9 @@ MonoBehaviour:
   enemyDamage: 10
   enemyMaxHP: 40
   enemyCurrentHP: 0
-  enemyDrop: {fileID: 0}
+  enemyDrop: {fileID: 11400000, guid: aa70b2a9b88b6374085d3e492728fc70, type: 2}
   enemyDropAmount: 1
-  enemyDropChance: 50
+  enemyDropChance: 60
   distanceToPlayer: 0
   maxChaseDistance: 20
   IS_DEAD: 0
