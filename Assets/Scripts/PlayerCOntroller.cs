@@ -7,7 +7,7 @@ using Input = UnityEngine.Input;
 public class PlayerCOntroller : MonoBehaviour
 {
     InventoryManager inventoryManager;
-
+    public Item healingPotion;
     public int playerBalance = 0;
 
     private float nextRegenTime;
@@ -64,7 +64,6 @@ public class PlayerCOntroller : MonoBehaviour
 
     private void Start()
     {
-        //inventoryManager = inventoryManager<InventoryManager>;
         QualitySettings.vSyncCount = 0;
 
 
@@ -87,6 +86,10 @@ public class PlayerCOntroller : MonoBehaviour
 
     void Update()
     {
+        if (currentHP > maxHP)
+        {
+            currentHP = maxHP;
+        }
 
         if (Input.GetKeyDown(KeyCode.Plus))
         {
@@ -185,15 +188,14 @@ public class PlayerCOntroller : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X))
         {
-            if (playerInventory.potionCount >= 1)
+            bool prefect = InventoryManager.instance.DeleteTheSpecifiedItem(healingPotion, 1);
+            if (prefect)
             {
-                playerInventory.potionCount--;
-                currentHP += 20;
-                if (currentHP > maxHP)
-                {
-                    currentHP = maxHP;
-                }
+                useHealingPotion();
+                InventoryManager.instance.UpdateInventoryUI();
+                Debug.Log("Дішло 2 222222222");
             }
+
         }
 
 
@@ -278,7 +280,21 @@ public class PlayerCOntroller : MonoBehaviour
 
 
 
+    public void usingItem(Item itemToUse)
+    {
+        switch (itemToUse.itemName)
+        {
+            case "Healing potion":
+                useHealingPotion();
+                break;
+        }
+    }
 
+
+    public void useHealingPotion()
+    {
+        currentHP += 20;
+    }
 
 
 }

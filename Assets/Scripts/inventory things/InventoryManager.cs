@@ -16,26 +16,22 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI itemDescriptionName;
     public TextMeshProUGUI itemDescription;
     public TextMeshProUGUI itemDescriptionType;
-
     public bool toolTipPanelOn;
 
-    
-
+    [SerializeField]
+    private PlayerCOntroller playerController;
     public static InventoryManager instance;
 
+
     public List<ItemData> inventoryItems = new List<ItemData>();
-
     public List<Item> allItems = new List<Item>();
-
     [SerializeField]
     private Transform itemsParent;
-
     public ItemCell itemCellPrefab;
     public Button dropButton; // Public змінна для посилання на кнопку "Викинути предмет"
-
     private List<ItemCell> _itemCells = new();
 
-    private int _selectedCellIndex = 0;
+    public int _selectedCellIndex = 0;
 
     private void Awake()
     {
@@ -46,6 +42,13 @@ public class InventoryManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
     }
+
+
+    private void Start()
+    {
+        playerController = GetComponentInChildren<PlayerCOntroller>();
+    }
+
 
     public void Update()
     {
@@ -62,7 +65,7 @@ public class InventoryManager : MonoBehaviour
 
 
 
-    public void AddItem(Item item, int currentStack)
+    public void AddItem(Item item, int StackToAdd)
     {
         if (item.stackable)
         {
@@ -71,36 +74,35 @@ public class InventoryManager : MonoBehaviour
                 if (existingItem.UniqueName == item.itemName && existingItem.StackCount < item.maxStack)
                 {
                     int remainingStack = item.maxStack - existingItem.StackCount;
-                    int amountToAdd = Mathf.Min(currentStack, remainingStack);
+                    int amountToAdd = Mathf.Min(StackToAdd, remainingStack);
 
                     existingItem.StackCount += amountToAdd;
-                    currentStack -= amountToAdd;
+                    StackToAdd -= amountToAdd;
                 }
             }
         }
 
-        if (currentStack > 0)
+        if (StackToAdd > 0)
         {
-            inventoryItems.Add(new ItemData { UniqueName=item.itemName, StackCount=currentStack }); ///шо то таке
+            inventoryItems.Add(new ItemData { UniqueName=item.itemName, StackCount= StackToAdd }); ///шо то таке
         }
 
         UpdateInventoryUI();
     }
 
 
-
     public bool DeleteTheSpecifiedItem(Item item, int amountToRemove)
     {
-        int itemDeleted = 0;
-        for (int i = 0; itemDeleted < inventoryItems.Count; i++)
+        for (int i = 0; i < inventoryItems.Count; i++)
         {
             if (inventoryItems[i].UniqueName == item.itemName)
             {
                 if (inventoryItems[i].StackCount >= amountToRemove)
                 {
                     inventoryItems[i].StackCount -= amountToRemove;
-                    itemDeleted++;
+                    Debug.Log("дійшло =-=-=-=-=-=-");
                     return true;
+                    
                 }
                 else
                 {
@@ -112,7 +114,22 @@ public class InventoryManager : MonoBehaviour
     }
 
 
+    public void UseItem(int myIndex)
+    {
+        var item = allItems.Find(itemSO => itemSO.itemName == inventoryItems[myIndex].UniqueName);
+        if (item.canUse)
+        {
+            inventoryItems[myIndex].StackCount--;
+            playerController.usingItem(item);
+            if (inventoryItems[myIndex].StackCount <= 0)
+            {
+                RemoveItem(myIndex);
+            }
 
+            UpdateInventoryUI();
+        }
+        
+    }
 
 
 
@@ -125,6 +142,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventoryItems.RemoveAt(index);
             UpdateInventoryUI();
+            toolTipPanelOn = false;
         }
     }
 
@@ -150,8 +168,15 @@ public class InventoryManager : MonoBehaviour
 
             if (item != null)
             {
-
-                CreateItemCell(item, i);
+                if (inventoryItems[i].StackCount > 0)
+                {
+                    CreateItemCell(item, i);
+                }
+                else
+                {
+                    RemoveItem(i);
+                }
+                
             }
             else
             {

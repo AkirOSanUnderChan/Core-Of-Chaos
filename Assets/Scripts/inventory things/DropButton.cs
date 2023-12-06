@@ -16,4 +16,13 @@ public class DropButton : MonoBehaviour
             InventoryManager.instance.RemoveItem(selectedItemIndex);
         }
     }
+
+    public void OnUseButtonClick()
+    {
+        int myIndex = InventoryManager.instance._selectedCellIndex;
+        if (myIndex >= 0 && myIndex < InventoryManager.instance.inventoryItems.Count)
+        {
+            InventoryManager.instance.UseItem(myIndex);
+        }
+    }
 }

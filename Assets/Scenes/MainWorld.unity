@@ -9784,7 +9784,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &199942640
 BoxCollider:
@@ -10149,7 +10148,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &220813592
 BoxCollider:
@@ -12212,7 +12210,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &407046877
 BoxCollider:
@@ -15176,7 +15173,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &545682467
 BoxCollider:
@@ -15508,6 +15504,7 @@ GameObject:
   - component: {fileID: 563666431}
   - component: {fileID: 563666430}
   - component: {fileID: 563666429}
+  - component: {fileID: 563666432}
   m_Layer: 5
   m_Name: Use button
   m_TagString: Untagged
@@ -15579,7 +15576,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 563666430}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 563666432}
+        m_TargetAssemblyTypeName: DropButton, Assembly-CSharp
+        m_MethodName: OnUseButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &563666430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15618,6 +15627,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 563666427}
   m_CullTransparentMesh: 1
+--- !u!114 &563666432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563666427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bd94b8403432d44ea6606a7fbdca70e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &579010786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16023,7 +16044,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &590800971
 BoxCollider:
@@ -16215,7 +16235,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &600804493
 BoxCollider:
@@ -17017,7 +17036,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &668830488
 BoxCollider:
@@ -18908,7 +18926,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 98.33451, y: -30.6}
+  m_AnchoredPosition: {x: 97.5, y: -8.8}
   m_SizeDelta: {x: 197.869, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &784169023
@@ -18931,7 +18949,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tab
+  m_text: i
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b56af6d9bf2114448874f4f1d5efd763, type: 2}
   m_sharedMaterial: {fileID: -8025710683931713614, guid: b56af6d9bf2114448874f4f1d5efd763, type: 2}
@@ -18958,14 +18976,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 51.74
+  m_fontSizeBase: 51.74
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -18994,7 +19012,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 125.89025, w: 0}
+  m_margin: {x: 0, y: 0, z: 149.25037, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -19767,7 +19785,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &849674699
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20454,6 +20472,7 @@ MonoBehaviour:
   itemDescription: {fileID: 405225188}
   itemDescriptionType: {fileID: 1203909011}
   toolTipPanelOn: 0
+  playerController: {fileID: 1225993065}
   allItems:
   - {fileID: 11400000, guid: 2de2ee3f0a0ed3142a33b628323f2fba, type: 2}
   - {fileID: 11400000, guid: aa70b2a9b88b6374085d3e492728fc70, type: 2}
@@ -20461,6 +20480,7 @@ MonoBehaviour:
   itemsParent: {fileID: 1708068374}
   itemCellPrefab: {fileID: 6220339916278781411, guid: 124cd4cf5dc504342a88c218f158d67d, type: 3}
   dropButton: {fileID: 1107568999}
+  _selectedCellIndex: 0
 --- !u!1 &942978973
 GameObject:
   m_ObjectHideFlags: 0
@@ -21070,7 +21090,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &949096654
 RectTransform:
   m_ObjectHideFlags: 0
@@ -23208,7 +23228,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &1029470527
 BoxCollider:
@@ -24476,6 +24495,141 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ac5a6bc9fb37a14bbd546da542e0236, type: 3}
+--- !u!1 &1086358431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1086358432}
+  - component: {fileID: 1086358434}
+  - component: {fileID: 1086358433}
+  m_Layer: 5
+  m_Name: Version text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1086358432
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086358431}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.58, y: 0.58, z: 0.58}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1615537451}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -28.9}
+  m_SizeDelta: {x: 580.15, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1086358433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086358431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: pre alpha 0.4.0a
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 1660944383
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0.38431373}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1086358434
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086358431}
+  m_CullTransparentMesh: 1
 --- !u!4 &1089508399 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400006, guid: 3ac5a6bc9fb37a14bbd546da542e0236, type: 3}
@@ -36266,6 +36420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33d3743eae2c7db489c841a5a713dffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healingPotion: {fileID: 11400000, guid: 2de2ee3f0a0ed3142a33b628323f2fba, type: 2}
   playerBalance: 0
   maxDash: 5
   smoothDashSpeed: 10
@@ -36364,6 +36519,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerController: {fileID: 1225993065}
   playerMenuManager: {fileID: 1225993066}
+  inventoryManager: {fileID: 942367064}
 --- !u!1 &1228655086
 GameObject:
   m_ObjectHideFlags: 0
@@ -39731,14 +39887,14 @@ RectTransform:
   m_LocalScale: {x: 1.5, y: 1.45, z: 1.45}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 784169022}
   - {fileID: 658310607}
+  - {fileID: 784169022}
   m_Father: {fileID: 1497154241}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 637, y: -391}
+  m_AnchoredPosition: {x: 805, y: -391}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1351051991
@@ -41266,7 +41422,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!1 &1462085421
 GameObject:
@@ -41791,7 +41946,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &1516337989
 BoxCollider:
@@ -43198,7 +43352,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &1595187513
 BoxCollider:
@@ -43658,6 +43811,7 @@ RectTransform:
   - {fileID: 57406883}
   - {fileID: 1549809664}
   - {fileID: 1239087201}
+  - {fileID: 1086358432}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45361,7 +45515,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &1722398304
 BoxCollider:
@@ -59377,7 +59530,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &1999534142
 BoxCollider:
@@ -60226,7 +60378,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &2045936933
 BoxCollider:
@@ -61269,7 +61420,6 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
-  minDistance: 10
   targetObject: {fileID: 942367055}
 --- !u!65 &2107788492
 BoxCollider:

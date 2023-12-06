@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public Sprite itemImage;
     public bool stackable;
     public int maxStack;
+    public bool canUse;
 }
 
 public sealed class ItemData

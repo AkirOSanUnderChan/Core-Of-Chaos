@@ -91,7 +91,7 @@ public class Outline : MonoBehaviour {
     private float maxDistance = 10f;  // Максимальна відстань, при якій обводка буде максимальною
 
     [SerializeField]
-    private float minDistance = 5f;   // Мінімальна відстань, при якій обводка буде відсутня
+    //private float minDistance = 5f;   // Мінімальна відстань, при якій обводка буде відсутня
 
     public Transform targetObject; // Посилання на об'єкт, до якого ви хочете виміряти відстань
 
