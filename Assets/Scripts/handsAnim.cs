@@ -7,42 +7,55 @@ public class handsAnim : MonoBehaviour
     private playerMenuManager playerMenuManager;
     public Animator animator;
 
-    public int atackIndex;
-    static bool isBlocked;
+
+    private bool isFirstAttack = true;
+    private float lastAttackTime = 0f;
+    private float comboDelay = 0.1f;
+
     // Start is called before the first frame update
     void Start()
     {
-        atackIndex = 0;
-        isBlocked = false;
+
+
         animator = GetComponent<Animator>();
         playerMenuManager = PlayerControllerSingleton.Instance.playerMenuManager;
-        
+
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (!playerMenuManager.playerInWindow)
         {
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                if (!isBlocked)
-                {
-
-                }
-            }
-
-
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("“и не в в≥кн≥ ≥ ти зараз вдарив");
-                animator.SetBool("atack", true);
-                animator.SetBool("idle", false);
+                float currentTime = Time.time;
+
+                if (isFirstAttack || (currentTime - lastAttackTime > comboDelay))
+                {
+                    if (!isFirstAttack && currentTime - lastAttackTime <= comboDelay)
+                    {
+                        // якщо не перша атака ≥ м≥ж атаками менше comboDelay секунд, в≥дтворити ан≥мац≥ю atack2
+                        animator.SetBool("atack", false);
+                        animator.SetBool("atack2", true);
+                        isFirstAttack = true;
+                    }
+                    else
+                    {
+                        // ≤накше в≥дтворити ан≥мац≥ю atack
+                        animator.SetBool("atack", true);
+                        animator.SetBool("atack2", false);
+                        isFirstAttack = false;
+                    }
+
+                    animator.SetBool("idle", false);
+                    lastAttackTime = currentTime;
+                }
             }
             else
             {
                 animator.SetBool("atack", false);
+                animator.SetBool("atack2", false);
                 animator.SetBool("idle", true);
             }
         }
@@ -50,8 +63,8 @@ public class handsAnim : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                Debug.Log("“и в в≥кн≥ ≥ не можеш зараз вдарити");
                 animator.SetBool("atack", false);
+                animator.SetBool("atack2", false);
                 animator.SetBool("idle", true);
             }
         }
