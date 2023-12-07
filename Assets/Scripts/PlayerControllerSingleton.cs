@@ -8,6 +8,7 @@ public class PlayerControllerSingleton : MonoBehaviour
     public PlayerCOntroller PlayerController;
     public playerMenuManager playerMenuManager;
     public InventoryManager inventoryManager;
+    public handsAnim handsAnimScript;
 
     private void Awake()
     {

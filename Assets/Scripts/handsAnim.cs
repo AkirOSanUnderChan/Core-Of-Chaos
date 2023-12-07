@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class handsAnim : MonoBehaviour
 {
+    private PlayerCOntroller playerController;
+
+
     private playerMenuManager playerMenuManager;
     public Animator animator;
 
@@ -12,6 +15,11 @@ public class handsAnim : MonoBehaviour
     private float lastAttackTime = 0f;
     private float comboDelay = 0.1f;
 
+
+    public float blockTime = 100;
+    public float blockDelay;
+    public bool canBlock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +27,26 @@ public class handsAnim : MonoBehaviour
 
         animator = GetComponent<Animator>();
         playerMenuManager = PlayerControllerSingleton.Instance.playerMenuManager;
-
+        playerController = FindObjectOfType<PlayerCOntroller>();
 
     }
 
     void Update()
     {
+
+        if (blockTime <= 0)
+        {
+            canBlock = false;
+            blockTime = 0;
+        }
+        if (blockTime >= 100)
+        {
+            canBlock = true;
+            blockTime = 100;
+        }
+
+
+
         if (!playerMenuManager.playerInWindow)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -57,6 +79,37 @@ public class handsAnim : MonoBehaviour
                 animator.SetBool("atack", false);
                 animator.SetBool("atack2", false);
                 animator.SetBool("idle", true);
+            }
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                blockTime -= 1 * 100 * Time.deltaTime;
+                if (canBlock)
+                {
+                    animator.SetBool("block", true);
+                    playerController.canTakeDamage = false;
+                    
+                }
+                else
+                {
+                    animator.SetBool("block", false);
+                    playerController.canTakeDamage = true;
+                    
+                }
+
+                
+            }
+            else
+            {
+                animator.SetBool("block", false);
+                playerController.canTakeDamage = true;
+                blockTime += 1 * 30 * Time.deltaTime;
+
+            }
+            if (Input.GetKeyUp(KeyCode.Mouse1))
+            {
+                animator.SetBool("block", false);
+                playerController.canTakeDamage = true;
+                blockTime += 1 * 5 * Time.deltaTime;
             }
         }
         else

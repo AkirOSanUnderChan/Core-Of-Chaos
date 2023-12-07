@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class playerMenuManager : MonoBehaviour
 {
-    InventoryManager inventoryManager; // Додайте це поле
-
+    InventoryManager inventoryManager;
+    public handsAnim handsAnimScript;
     public Item goldCoinItem;
     public Item potionItem;
     public bool playerInWindow = false;
@@ -40,8 +40,16 @@ public class playerMenuManager : MonoBehaviour
     public PlayerCOntroller ggControll;
     public playerInventory playerInventory;
 
+
+    public GameObject hotbarGroop;
+    public GameObject mainHudGroop;
+
+    public GameObject blockGroop;
+    public Slider blockSlider;
+
     public GameObject playerMenu;
     public bool PM_IsActive;
+    public bool Inventory_IsActive;
     public bool isPaused = false;
     public bool playerInPause = false;
 
@@ -53,10 +61,11 @@ public class playerMenuManager : MonoBehaviour
     {
         playerInWindow = false;
         playerInPause = false;
+        Inventory_IsActive = false;
 
         DeathMenu.SetActive(false);
         inventoryManager = GetComponent<InventoryManager>();
-
+        handsAnimScript = PlayerControllerSingleton.Instance.handsAnimScript;
         ggControll = GetComponent<PlayerCOntroller>();
         playerInventory = GetComponent<playerInventory>();
 
@@ -64,10 +73,16 @@ public class playerMenuManager : MonoBehaviour
         PauseMenu.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
-
+        blockSlider.maxValue = 100;
+        blockSlider.minValue = 0;
     }
     private void Update()
     {
+        
+
+
+
+
         if (isPaused)
         {
             Time.timeScale = 0;
@@ -82,8 +97,8 @@ public class playerMenuManager : MonoBehaviour
         {
             isPaused = true;
             Cursor.lockState = CursorLockMode.None;
-
-        }else if (!playerInWindow)
+        }
+        else if (!playerInWindow)
         {
             isPaused = false;
             Cursor.lockState = CursorLockMode.Locked;
@@ -106,6 +121,9 @@ public class playerMenuManager : MonoBehaviour
                     playerInWindow = false;
                     playerInPause = false;
                     InventoryObject.SetActive(false);
+                    mainHudGroop.SetActive(true);
+                    hotbarGroop.SetActive(true);
+
 
 
                 }
@@ -114,6 +132,7 @@ public class playerMenuManager : MonoBehaviour
                     PauseMenu.SetActive(true);
                     playerInWindow = true;
                     playerInPause = true;
+                    
                 }
             }
             
@@ -127,7 +146,9 @@ public class playerMenuManager : MonoBehaviour
             playerMenu.SetActive(false);
             playerInWindow = true;
             playerInPause = true;
-
+            mainHudGroop.SetActive(false);
+            hotbarGroop.SetActive(false);
+            InventoryObject.SetActive(false);
 
 
         }
@@ -143,18 +164,39 @@ public class playerMenuManager : MonoBehaviour
             {
                 if (!playerInPause)
                 {
-                    if (PM_IsActive)
+                    if (Inventory_IsActive)
                     {
                         InventoryObject.SetActive(false);
+
+                        mainHudGroop.SetActive(true);
+                        hotbarGroop.SetActive(true);
+
                         PM_IsActive = false;
                         playerInWindow = false;
+                        Inventory_IsActive = false;
+
+
                     }
-                    else if (!PM_IsActive)
+                    else if (!Inventory_IsActive)
                     {
                         InventoryObject.SetActive(true);
-                        PM_IsActive = true;
+
+                        playerMenu.SetActive(false);
+                        mainHudGroop.SetActive(false);
+                        hotbarGroop.SetActive(false);
+
+                        PM_IsActive = false;
+                        Inventory_IsActive = true;
                         playerInWindow = true;
                     }
+                }
+                else
+                {
+                    playerMenu.SetActive(false);
+                    InventoryObject.SetActive(false);
+
+                    mainHudGroop.SetActive(false);
+                    hotbarGroop.SetActive(false);
                 }
                 
             }
@@ -168,15 +210,28 @@ public class playerMenuManager : MonoBehaviour
                 {
                     if (PM_IsActive)
                     {
+                        InventoryObject.SetActive(false);
                         playerMenu.SetActive(false);
+
+                        mainHudGroop.SetActive(true);
+                        hotbarGroop.SetActive(true);
+
                         PM_IsActive = false;
                         playerInWindow = false;
                     }
                     else if (!PM_IsActive)
                     {
+                        InventoryObject.SetActive(false);
+
                         playerMenu.SetActive(true);
+
+                        mainHudGroop.SetActive(false);
+                        hotbarGroop.SetActive(false);
+
                         PM_IsActive = true;
                         playerInWindow = true;
+                        Inventory_IsActive = false;
+
                     }
                 }
 
@@ -290,6 +345,17 @@ public class playerMenuManager : MonoBehaviour
 
         playerEnergiSlider_UI.maxValue = ggControll.maxEnergi;
         playerEnergiSlider_UI.value = ggControll.currentEnergi;
+
+        blockSlider.value = handsAnimScript.blockTime;
+        if (handsAnimScript.blockTime >= 100)
+        {
+            blockGroop.SetActive(false);
+        }
+        else
+        {
+            blockGroop.SetActive(true);
+        }
+
 
     }
 }

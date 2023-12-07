@@ -20,6 +20,7 @@ public class PlayerMovemant : MonoBehaviour
     [Header("Sounds")]
     public AudioSource playerSourse;
     public AudioClip takeDamageSound;
+    public AudioClip blockedDamage;
 
     private float moveSpeed;
     public float walkSpeed;
@@ -307,8 +308,17 @@ public class PlayerMovemant : MonoBehaviour
     {
         if (other.CompareTag("EnemyWeapon"))
         {
-            playerSourse.PlayOneShot(takeDamageSound);
-            ggControll.currentHP -= 1;
+            if (ggControll.canTakeDamage)
+            {
+                playerSourse.PlayOneShot(takeDamageSound);
+                ggControll.currentHP -= 1;
+            }
+            else
+            {
+                playerSourse.PlayOneShot(blockedDamage);
+
+            }
+
         }
     }
 

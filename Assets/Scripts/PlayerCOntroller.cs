@@ -58,6 +58,8 @@ public class PlayerCOntroller : MonoBehaviour
     public TextMeshProUGUI PlayerXPbar_TEXT;
     public TextMeshProUGUI playerLVL_TEXT;
 
+    public bool canTakeDamage;
+
 
 
     //GUI end
@@ -65,7 +67,7 @@ public class PlayerCOntroller : MonoBehaviour
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
-
+        canTakeDamage = true;
 
         playerBalance = 0;
 
