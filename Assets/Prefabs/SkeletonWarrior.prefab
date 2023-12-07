@@ -2177,7 +2177,7 @@ MonoBehaviour:
   EnemyName: Lvl 1 Skeleton
   XPForKillEnemy: 5
   coinsTypeForKillEnemy: {fileID: 11400000, guid: 185c8cbd96f84b1428f011c06d5fb698, type: 2}
-  CointForKillEnemy: 10
+  CointForKillEnemy: 5
   enemyhpCount: {fileID: 9181156732032058635}
   enemySliderHP: {fileID: 4959228907754196993}
   EnemyNameText: {fileID: 302084485202614286}
