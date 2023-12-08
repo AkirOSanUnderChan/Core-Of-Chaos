@@ -11,11 +11,10 @@ public class handsAnim : MonoBehaviour
     public Animator animator;
 
 
-    private bool isFirstAttack = true;
-    private float lastAttackTime = 0f;
-    private float comboDelay = 0.1f;
 
+    public float comboTime = 0.1f;
 
+    public int comboStreek;
     public float blockTime = 100;
     public float blockDelay;
     public bool canBlock;
@@ -23,7 +22,7 @@ public class handsAnim : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        comboStreek = 0;
 
         animator = GetComponent<Animator>();
         playerMenuManager = PlayerControllerSingleton.Instance.playerMenuManager;
@@ -45,34 +44,52 @@ public class handsAnim : MonoBehaviour
             blockTime = 100;
         }
 
-
+        if (comboTime >= 0)
+        {
+            comboTime -= 1 * 100 * Time.deltaTime;
+        }
 
         if (!playerMenuManager.playerInWindow)
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
-                float currentTime = Time.time;
-
-                if (isFirstAttack || (currentTime - lastAttackTime > comboDelay))
+                if (comboTime <= 0)
                 {
-                    if (!isFirstAttack && currentTime - lastAttackTime <= comboDelay)
-                    {
-                        // якщо не перша атака ≥ м≥ж атаками менше comboDelay секунд, в≥дтворити ан≥мац≥ю atack2
-                        animator.SetBool("atack", false);
-                        animator.SetBool("atack2", true);
-                        isFirstAttack = true;
-                    }
-                    else
-                    {
-                        // ≤накше в≥дтворити ан≥мац≥ю atack
-                        animator.SetBool("atack", true);
-                        animator.SetBool("atack2", false);
-                        isFirstAttack = false;
-                    }
+                    comboStreek = 1;
+                    animator.SetBool("atack", true);
+                    animator.SetBool("atack2", false);
+                    animator.SetBool("atack3", false);
 
                     animator.SetBool("idle", false);
-                    lastAttackTime = currentTime;
+
+                    comboTime = 100;
+
                 }
+                else if (comboTime > 0 & comboStreek == 1)
+                {
+                    comboStreek = 2;
+                    animator.SetBool("atack", false);
+                    animator.SetBool("atack2", true);
+                    animator.SetBool("atack3", false);
+
+                    animator.SetBool("idle", false);
+
+                    comboTime = 100;
+                }
+                else if (comboTime > 0 & comboStreek == 2)
+                {
+                    comboStreek = 0;
+                    animator.SetBool("atack", false);
+                    animator.SetBool("atack2", false);
+                    animator.SetBool("atack3", true);
+
+                    animator.SetBool("idle", false);
+
+                    comboTime = 0;
+                }
+
+
+
             }
             else
             {
