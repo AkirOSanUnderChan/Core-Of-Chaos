@@ -23,7 +23,7 @@ public class playerMenuManager : MonoBehaviour
     public TextMeshProUGUI UpgradePoints_UI;
 
     public TextMeshProUGUI MaxHPStats_Menu;
-    public TextMeshProUGUI SpeedStatus_Menu;
+    public TextMeshProUGUI StaminaStatus_Menu;
     public TextMeshProUGUI DamageStatus_Menu;
     public TextMeshProUGUI RegenerationStatus_Menu;
     public GameObject DeathMenu;
@@ -32,6 +32,8 @@ public class playerMenuManager : MonoBehaviour
     public TextMeshProUGUI potionCount_UI;
     public TextMeshProUGUI playerBalance_UI;
     public TextMeshProUGUI playerBalanceInScreen_UI;
+
+    public TextMeshProUGUI playerInventoryLvl_UI;
 
 
     public TextMeshProUGUI playerEnergi_UI;
@@ -202,41 +204,41 @@ public class playerMenuManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            if (!ggControll.playerIsDead)
-            {
-                if (!playerInPause)
-                {
-                    if (PM_IsActive)
-                    {
-                        InventoryObject.SetActive(false);
-                        playerMenu.SetActive(false);
+        //if (Input.GetKeyDown(KeyCode.I))
+        //{
+        //    if (!ggControll.playerIsDead)
+        //    {
+        //        if (!playerInPause)
+        //        {
+        //            if (PM_IsActive)
+        //            {
+        //                InventoryObject.SetActive(false);
+        //                playerMenu.SetActive(false);
 
-                        mainHudGroop.SetActive(true);
-                        hotbarGroop.SetActive(true);
+        //                mainHudGroop.SetActive(true);
+        //                hotbarGroop.SetActive(true);
 
-                        PM_IsActive = false;
-                        playerInWindow = false;
-                    }
-                    else if (!PM_IsActive)
-                    {
-                        InventoryObject.SetActive(false);
+        //                PM_IsActive = false;
+        //                playerInWindow = false;
+        //            }
+        //            else if (!PM_IsActive)
+        //            {
+        //                InventoryObject.SetActive(false);
 
-                        playerMenu.SetActive(true);
+        //                playerMenu.SetActive(true);
 
-                        mainHudGroop.SetActive(false);
-                        hotbarGroop.SetActive(false);
+        //                mainHudGroop.SetActive(false);
+        //                hotbarGroop.SetActive(false);
 
-                        PM_IsActive = true;
-                        playerInWindow = true;
-                        Inventory_IsActive = false;
+        //                PM_IsActive = true;
+        //                playerInWindow = true;
+        //                Inventory_IsActive = false;
 
-                    }
-                }
+        //            }
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
     }
     public void PlayerInGame()
@@ -259,24 +261,25 @@ public class playerMenuManager : MonoBehaviour
     public void maxHealthUpgrade()
     {
 
-        
-        //if (ggControll.playerUpgradeScore >= 1)
-        //{
-        //    ggControll.playerUpgradeScore--;
-        //    ggControll.maxHP++;
-        //}
+
+        if (ggControll.playerUpgradeScore >= 1)
+        {
+            ggControll.playerUpgradeScore--;
+            ggControll.maxHP += 10;
+        }
 
 
 
     }
-    //public void SpeedUpgrade()
-    //{
-    //    if (ggControll.playerUpgradeScore >= 1)
-    //    {
-    //        ggControll.playerUpgradeScore--;
-    //        ggControll.runSpeed++;
-    //    }
-    //}
+    public void StaminaUpgrade()
+    {
+        if (ggControll.playerUpgradeScore >= 1)
+        {
+            ggControll.playerUpgradeScore--;
+            ggControll.maxEnergi += 10;
+            ggControll.energiRegenSpeed += 1;
+        }
+    }
     public void DamageUpgrade()
     {
         if (ggControll.playerUpgradeScore >= 1)
@@ -338,8 +341,8 @@ public class playerMenuManager : MonoBehaviour
         potionCount_UI.SetText(playerInventory.potionCount.ToString());
         playerBalance_UI.SetText("Your balance: " + ggControll.playerBalance.ToString());
         playerBalanceInScreen_UI.SetText("Balance: " + ggControll.playerBalance.ToString());
-
-
+        playerInventoryLvl_UI.SetText("Level: " + ggControll.playerLVL.ToString());
+        StaminaStatus_Menu.SetText("Stamina: " + ggControll.maxEnergi.ToString());
 
         playerEnergi_UI.SetText($"{ggControll.currentEnergi:F0}/{ggControll.maxEnergi:F0}");
 

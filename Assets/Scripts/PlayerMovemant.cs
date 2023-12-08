@@ -204,8 +204,17 @@ public class PlayerMovemant : MonoBehaviour
         // Mode - Sprinting
         else if (grounded && Input.GetKey(sprintKey))
         {
-            state = MovementState.sprinting;
-            moveSpeed = sprintSpeed;
+            if (ggControll.currentEnergi > 0)
+            {
+                state = MovementState.sprinting;
+                moveSpeed = sprintSpeed;
+            }
+            else
+            {
+                state = MovementState.walking;
+                moveSpeed = walkSpeed;
+            }
+            
         }
 
         // Mode - Walking

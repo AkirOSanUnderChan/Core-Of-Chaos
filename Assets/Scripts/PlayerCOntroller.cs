@@ -16,7 +16,7 @@ public class PlayerCOntroller : MonoBehaviour
     public bool canDash = true;
     public float dashCooldown; // Затримка між використанням дешу в секундах
 
-    public TextMeshProUGUI pickupText; // UI-елемент для відображення тексту з інструкцією
+    public TextMeshProUGUI pickupText;
 
     public GameObject TraderWindow;
 
@@ -88,6 +88,7 @@ public class PlayerCOntroller : MonoBehaviour
 
     void Update()
     {
+
         if (currentHP > maxHP)
         {
             currentHP = maxHP;
@@ -114,14 +115,7 @@ public class PlayerCOntroller : MonoBehaviour
         inputUpdate();
 
 
-        if (currentEnergi < maxEnergi)
-        {
-            currentEnergi += 10 * energiRegenSpeed * Time.deltaTime;
-            if (currentEnergi > maxEnergi)
-            {
-                currentEnergi = maxEnergi;
-            }
-        }
+        
 
 
 
@@ -200,7 +194,21 @@ public class PlayerCOntroller : MonoBehaviour
 
         }
 
-
+        if (Input.GetKey(KeyCode.LeftControl) & currentEnergi > 0)
+        {
+            currentEnergi -= 20 * Time.deltaTime;
+        }
+        else if(!Input.GetKey(KeyCode.LeftControl))
+        {
+            if (currentEnergi < maxEnergi)
+            {
+                currentEnergi += 10 * energiRegenSpeed * Time.deltaTime;
+                if (currentEnergi > maxEnergi)
+                {
+                    currentEnergi = maxEnergi;
+                }
+            }
+        }
 
     }
     public void lvlUpdate()
