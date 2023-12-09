@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System.Reflection;
+using System.Xml.Serialization;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class InventoryManager : MonoBehaviour
 
 
     public List<ItemData> inventoryItems = new List<ItemData>();
-    public List<Item> weaponSlots = new List<Item>();
+    public Item weapon1Slot;
     public List<Item> allItems = new List<Item>();
 
 
@@ -134,7 +135,34 @@ public class InventoryManager : MonoBehaviour
         
     }
 
+    public void EquipWeaponItem(int weaponIndex)
+    {
+        var item = allItems.Find(itemSO => itemSO.itemName == inventoryItems[weaponIndex].UniqueName);
 
+        if (item is WeaponItem weaponItem)
+        {
+
+            if (weapon1Slot == null)
+            {
+                weapon1Slot = item;
+                RemoveItem(weaponIndex);
+                UpdateInventoryUI();
+
+            }
+            else
+            {
+                AddItem(weapon1Slot, 1);
+                weapon1Slot = item;
+                RemoveItem(weaponIndex);
+                UpdateInventoryUI();
+
+            }
+
+
+
+
+        }
+    }
 
 
 
@@ -189,6 +217,8 @@ public class InventoryManager : MonoBehaviour
             }
 
         }
+
+        
     }
 
     private void CreateItemCell(Item item, int index)
@@ -209,11 +239,28 @@ public class InventoryManager : MonoBehaviour
         toolTipPanelOn = true;
 
         var item = allItems.Find(itemSO => itemSO.itemName == inventoryItems[index].UniqueName);
-        itemDescriptionName.SetText(item.itemName);
-        itemDescription.SetText(item.description);
-        itemDescriptionType.SetText(item.itemType);
-        itemDescriptionType.color = item.itemTypeColor;
-        itemDescriptionImage.sprite = item.itemImage;
+        
+        if (item is WeaponItem weaponItem)
+        {
+            itemDescription.SetText(
+                "Atack speed: " + weaponItem.weaponSpeed +"\n" + 
+                "Damage: " + weaponItem.weaponDamage + "\n" + "\n" +
+                item.description
+                );
+
+            itemDescriptionName.SetText(item.itemName);
+            itemDescriptionType.SetText(item.itemType);
+            itemDescriptionType.color = item.itemTypeColor;
+            itemDescriptionImage.sprite = item.itemImage;
+        }
+        else
+        {
+            itemDescriptionName.SetText(item.itemName);
+            itemDescription.SetText(item.description);
+            itemDescriptionType.SetText(item.itemType);
+            itemDescriptionType.color = item.itemTypeColor;
+            itemDescriptionImage.sprite = item.itemImage;
+        }
 
     }
 

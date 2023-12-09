@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class playerMenuManager : MonoBehaviour
 {
-    InventoryManager inventoryManager;
     public handsAnim handsAnimScript;
     public Item goldCoinItem;
     public Item potionItem;
@@ -49,6 +48,10 @@ public class playerMenuManager : MonoBehaviour
     public GameObject blockGroop;
     public Slider blockSlider;
 
+    public GameObject inventorySlot1_UI;
+    public Image inventorySlot1_Image;
+    public TextMeshProUGUI inventorySlot1_Text;
+
     public GameObject playerMenu;
     public bool PM_IsActive;
     public bool Inventory_IsActive;
@@ -66,10 +69,10 @@ public class playerMenuManager : MonoBehaviour
         Inventory_IsActive = false;
 
         DeathMenu.SetActive(false);
-        inventoryManager = GetComponent<InventoryManager>();
         handsAnimScript = PlayerControllerSingleton.Instance.handsAnimScript;
         ggControll = GetComponent<PlayerCOntroller>();
         playerInventory = GetComponent<playerInventory>();
+        
 
         playerMenu.SetActive(false);
         PauseMenu.SetActive(false);
@@ -359,6 +362,19 @@ public class playerMenuManager : MonoBehaviour
             blockGroop.SetActive(true);
         }
 
+
+
+        if (InventoryManager.instance.weapon1Slot == null)
+        {
+            inventorySlot1_UI.SetActive(false);
+        }
+        else
+        {
+            inventorySlot1_UI.SetActive(true);
+
+            inventorySlot1_Image.sprite = InventoryManager.instance.weapon1Slot.itemImage;
+            inventorySlot1_Text.SetText(InventoryManager.instance.weapon1Slot.maxStack.ToString());
+        }
 
     }
 }

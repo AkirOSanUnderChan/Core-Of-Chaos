@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f90139b35f9d3c45b719337b89bb014, type: 3}
   m_Name: SkeletonSkullItem
   m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: 1c728f7cc6548f24cadceb6478fa25cc, type: 3}
   itemName: Skeleton skull
   itemType: Trophy
   itemTypeColor: {r: 1, g: 0.09474807, b: 0, a: 1}
   description: The skull of a murdered skeleton. it can be used to resurrect an ancient
     undead warrior
-  itemImage: {fileID: 21300000, guid: f656fff644bbeb0428520b13ba5fade5, type: 3}
   stackable: 1
   maxStack: 10
+  canUse: 0

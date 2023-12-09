@@ -25,4 +25,13 @@ public class DropButton : MonoBehaviour
             InventoryManager.instance.UseItem(myIndex);
         }
     }
+
+    public void OnEquipButtonClick()
+    {
+        int myIndex = InventoryManager.instance._selectedCellIndex;
+        if (myIndex >= 0 && myIndex < InventoryManager.instance.inventoryItems.Count)
+        {
+            InventoryManager.instance.EquipWeaponItem(myIndex);
+        }
+    }
 }

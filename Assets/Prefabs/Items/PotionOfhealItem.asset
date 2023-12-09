@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f90139b35f9d3c45b719337b89bb014, type: 3}
   m_Name: PotionOfhealItem
   m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: e52ea25af699fd445b7046374f81a5b9, type: 3}
   itemName: Healing potion
   itemType: Alchemy
   itemTypeColor: {r: 0.01476226, g: 0.6981132, b: 0, a: 1}
   description: After using this potion, you will instantly recover 20 HP
-  itemImage: {fileID: 21300000, guid: 4703661f35d49a047ad510954f2fb364, type: 3}
   stackable: 1
   maxStack: 30
   canUse: 1

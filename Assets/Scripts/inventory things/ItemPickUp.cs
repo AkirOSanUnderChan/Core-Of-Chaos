@@ -49,4 +49,5 @@ public class ItemPickUp : MonoBehaviour
         InventoryManager.instance.AddItem(item, currentStack);
         Destroy(gameObject);
     }
+    
 }

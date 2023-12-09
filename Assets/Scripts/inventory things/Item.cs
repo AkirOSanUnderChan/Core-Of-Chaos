@@ -5,11 +5,11 @@ using UnityEngine;
 
 public class Item : ScriptableObject
 {
+    public Sprite itemImage;
     public string itemName;
     public string itemType;
     public Color itemTypeColor;
     public string description;
-    public Sprite itemImage;
     public bool stackable;
     public int maxStack;
     public bool canUse;

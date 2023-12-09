@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f90139b35f9d3c45b719337b89bb014, type: 3}
   m_Name: GoldCoin
   m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: 93b5b28db06f8d2439c780ec3aeb28d2, type: 3}
   itemName: Gold Coin
   itemType: Currency
   itemTypeColor: {r: 1, g: 0.81786364, b: 0, a: 1}
   description: With this item you can buy things from NPCs
-  itemImage: {fileID: 21300000, guid: 97197fc9b0f90b9419415a42133b50cc, type: 3}
   stackable: 1
   maxStack: 10000
+  canUse: 0
