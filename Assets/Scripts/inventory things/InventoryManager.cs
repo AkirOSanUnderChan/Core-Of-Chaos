@@ -24,7 +24,10 @@ public class InventoryManager : MonoBehaviour
 
 
     public List<ItemData> inventoryItems = new List<ItemData>();
+    public List<Item> weaponSlots = new List<Item>();
     public List<Item> allItems = new List<Item>();
+
+
     [SerializeField]
     private Transform itemsParent;
     public ItemCell itemCellPrefab;

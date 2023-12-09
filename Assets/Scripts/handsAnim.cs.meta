@@ -3,7 +3,12 @@ guid: 4a8777b61451a7f4cbb9c80f8baf9932
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - swordAudSoursce: {instanceID: 0}
+  - swordAtack1Sound: {fileID: 8300000, guid: 9fae48c7be92941459517c3eef8912ff, type: 3}
+  - swordAtack2Sound: {fileID: 8300000, guid: 614bd197b7a5ef64597faa4fa9eeda76, type: 3}
+  - swordAtack3Sound: {fileID: 8300000, guid: 68ba82418903092429040a7c600686f4, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -9,7 +9,11 @@ public class handsAnim : MonoBehaviour
 
     private playerMenuManager playerMenuManager;
     public Animator animator;
+    public AudioSource swordAudSoursce;
 
+    public AudioClip swordAtack1Sound;
+    public AudioClip swordAtack2Sound;
+    public AudioClip swordAtack3Sound;
 
 
     public float comboTime = 0.1f;
@@ -48,6 +52,10 @@ public class handsAnim : MonoBehaviour
         {
             comboTime -= 1 * 100 * Time.deltaTime;
         }
+        if (comboTime <= 0)
+        {
+            comboStreek = 0;
+        }
 
         if (!playerMenuManager.playerInWindow)
         {
@@ -55,37 +63,54 @@ public class handsAnim : MonoBehaviour
             {
                 if (comboTime <= 0)
                 {
-                    comboStreek = 1;
+                    //swordAudSoursce.PlayOneShot(swordAtack1Sound);
+
                     animator.SetBool("atack", true);
                     animator.SetBool("atack2", false);
                     animator.SetBool("atack3", false);
 
                     animator.SetBool("idle", false);
 
+                    comboStreek = 1;
                     comboTime = 100;
 
                 }
                 else if (comboTime > 0 & comboStreek == 1)
                 {
-                    comboStreek = 2;
+                    //swordAudSoursce.PlayOneShot(swordAtack2Sound);
                     animator.SetBool("atack", false);
                     animator.SetBool("atack2", true);
                     animator.SetBool("atack3", false);
 
                     animator.SetBool("idle", false);
 
+                    comboStreek = 2;
                     comboTime = 100;
                 }
                 else if (comboTime > 0 & comboStreek == 2)
                 {
-                    comboStreek = 0;
+                    //swordAudSoursce.PlayOneShot(swordAtack3Sound);
+                    
                     animator.SetBool("atack", false);
                     animator.SetBool("atack2", false);
                     animator.SetBool("atack3", true);
 
                     animator.SetBool("idle", false);
 
+                    comboStreek = 0;
                     comboTime = 0;
+                }
+                else
+                {
+                    animator.SetBool("atack", false);
+                    animator.SetBool("atack2", false);
+                    animator.SetBool("atack3", false);
+
+                    animator.SetBool("idle", true);
+                    comboTime = 0;
+                    comboStreek = 0;
+
+
                 }
 
 
@@ -95,6 +120,8 @@ public class handsAnim : MonoBehaviour
             {
                 animator.SetBool("atack", false);
                 animator.SetBool("atack2", false);
+                animator.SetBool("atack3", false);
+
                 animator.SetBool("idle", true);
             }
             if (Input.GetKey(KeyCode.Mouse1))
@@ -138,5 +165,23 @@ public class handsAnim : MonoBehaviour
                 animator.SetBool("idle", true);
             }
         }
+    }
+
+
+
+    public void PlaySound_Atack1()
+    {
+        swordAudSoursce.PlayOneShot(swordAtack1Sound);
+
+    }
+    public void PlaySound_Atack2()
+    {
+        swordAudSoursce.PlayOneShot(swordAtack2Sound);
+
+    }
+    public void PlaySound_Atack3()
+    {
+        swordAudSoursce.PlayOneShot(swordAtack3Sound);
+
     }
 }
