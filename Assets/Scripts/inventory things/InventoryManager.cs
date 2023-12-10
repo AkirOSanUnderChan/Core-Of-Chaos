@@ -21,6 +21,7 @@ public class InventoryManager : MonoBehaviour
 
     [SerializeField]
     private PlayerCOntroller playerController;
+    public PlayerWeaponChanger weaponChanger;
     public static InventoryManager instance;
 
 
@@ -28,6 +29,9 @@ public class InventoryManager : MonoBehaviour
     public Item weapon1Slot;
     public List<Item> allItems = new List<Item>();
 
+
+    public GameObject equipButton;
+    public GameObject unequipButton;
 
     [SerializeField]
     private Transform itemsParent;
@@ -51,6 +55,7 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         playerController = GetComponentInChildren<PlayerCOntroller>();
+        weaponChanger = PlayerControllerSingleton.Instance.playerWeaponChanger;
     }
 
 
@@ -162,6 +167,14 @@ public class InventoryManager : MonoBehaviour
 
 
         }
+    }
+    public void UnequipWeaponItem()
+    {
+        AddItem(weapon1Slot, 1);
+        weapon1Slot = null;
+        weaponChanger.currentWeaponItem = null;
+        weaponChanger.ChangeWeapon();
+        UpdateInventoryUI();
     }
 
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class handsAnim : MonoBehaviour
 {
     private PlayerCOntroller playerController;
-
+    public PlayerWeaponChanger playerWC;
 
     private playerMenuManager playerMenuManager;
     public Animator animator;
@@ -31,11 +31,26 @@ public class handsAnim : MonoBehaviour
         animator = GetComponent<Animator>();
         playerMenuManager = PlayerControllerSingleton.Instance.playerMenuManager;
         playerController = FindObjectOfType<PlayerCOntroller>();
-
+        playerWC = GetComponentInChildren<PlayerWeaponChanger>();
     }
 
     void Update()
     {
+        if (playerWC.currentWeaponItem == null)
+        {
+            animator.SetLayerWeight(0, 0f);
+            animator.SetLayerWeight(1, 1f);
+
+        }
+        else
+        {
+            animator.SetLayerWeight(0, 1f);
+            animator.SetLayerWeight(1, 0f);
+        }
+
+
+
+
 
         if (blockTime <= 0)
         {
@@ -59,46 +74,64 @@ public class handsAnim : MonoBehaviour
 
         if (!playerMenuManager.playerInWindow)
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (InventoryManager.instance.weapon1Slot != null)
             {
-                if (comboTime <= 0)
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
-                    //swordAudSoursce.PlayOneShot(swordAtack1Sound);
+                    if (comboTime <= 0)
+                    {
+                        //swordAudSoursce.PlayOneShot(swordAtack1Sound);
 
-                    animator.SetBool("atack", true);
-                    animator.SetBool("atack2", false);
-                    animator.SetBool("atack3", false);
+                        animator.SetBool("atack", true);
+                        animator.SetBool("atack2", false);
+                        animator.SetBool("atack3", false);
 
-                    animator.SetBool("idle", false);
+                        animator.SetBool("idle", false);
 
-                    comboStreek = 1;
-                    comboTime = 100;
+                        comboStreek = 1;
+                        comboTime = 100;
 
-                }
-                else if (comboTime > 0 & comboStreek == 1)
-                {
-                    //swordAudSoursce.PlayOneShot(swordAtack2Sound);
-                    animator.SetBool("atack", false);
-                    animator.SetBool("atack2", true);
-                    animator.SetBool("atack3", false);
+                    }
+                    else if (comboTime > 0 & comboStreek == 1)
+                    {
+                        //swordAudSoursce.PlayOneShot(swordAtack2Sound);
+                        animator.SetBool("atack", false);
+                        animator.SetBool("atack2", true);
+                        animator.SetBool("atack3", false);
 
-                    animator.SetBool("idle", false);
+                        animator.SetBool("idle", false);
 
-                    comboStreek = 2;
-                    comboTime = 100;
-                }
-                else if (comboTime > 0 & comboStreek == 2)
-                {
-                    //swordAudSoursce.PlayOneShot(swordAtack3Sound);
-                    
-                    animator.SetBool("atack", false);
-                    animator.SetBool("atack2", false);
-                    animator.SetBool("atack3", true);
+                        comboStreek = 2;
+                        comboTime = 100;
+                    }
+                    else if (comboTime > 0 & comboStreek == 2)
+                    {
+                        //swordAudSoursce.PlayOneShot(swordAtack3Sound);
 
-                    animator.SetBool("idle", false);
+                        animator.SetBool("atack", false);
+                        animator.SetBool("atack2", false);
+                        animator.SetBool("atack3", true);
 
-                    comboStreek = 0;
-                    comboTime = 0;
+                        animator.SetBool("idle", false);
+
+                        comboStreek = 0;
+                        comboTime = 0;
+                    }
+                    else
+                    {
+                        animator.SetBool("atack", false);
+                        animator.SetBool("atack2", false);
+                        animator.SetBool("atack3", false);
+
+                        animator.SetBool("idle", true);
+                        comboTime = 0;
+                        comboStreek = 0;
+
+
+                    }
+
+
+
                 }
                 else
                 {
@@ -107,64 +140,50 @@ public class handsAnim : MonoBehaviour
                     animator.SetBool("atack3", false);
 
                     animator.SetBool("idle", true);
-                    comboTime = 0;
-                    comboStreek = 0;
-
-
                 }
-
-
-
-            }
-            else
-            {
-                animator.SetBool("atack", false);
-                animator.SetBool("atack2", false);
-                animator.SetBool("atack3", false);
-
-                animator.SetBool("idle", true);
-            }
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                blockTime -= 1 * 100 * Time.deltaTime;
-                if (canBlock)
+                if (Input.GetKey(KeyCode.Mouse1))
                 {
-                    animator.SetBool("block", true);
-                    playerController.canTakeDamage = false;
-                    
+                    blockTime -= 1 * 100 * Time.deltaTime;
+                    if (canBlock)
+                    {
+                        animator.SetBool("block", true);
+                        playerController.canTakeDamage = false;
+
+                    }
+                    else
+                    {
+                        animator.SetBool("block", false);
+                        playerController.canTakeDamage = true;
+
+                    }
+
+
                 }
                 else
                 {
                     animator.SetBool("block", false);
                     playerController.canTakeDamage = true;
-                    
-                }
+                    blockTime += 1 * 30 * Time.deltaTime;
 
-                
+                }
+                if (Input.GetKeyUp(KeyCode.Mouse1))
+                {
+                    animator.SetBool("block", false);
+                    playerController.canTakeDamage = true;
+                    blockTime += 1 * 5 * Time.deltaTime;
+                }
             }
             else
             {
-                animator.SetBool("block", false);
-                playerController.canTakeDamage = true;
-                blockTime += 1 * 30 * Time.deltaTime;
-
-            }
-            if (Input.GetKeyUp(KeyCode.Mouse1))
-            {
-                animator.SetBool("block", false);
-                playerController.canTakeDamage = true;
-                blockTime += 1 * 5 * Time.deltaTime;
+                if (Input.GetKeyDown(KeyCode.Mouse0))
+                {
+                    animator.SetBool("atack", false);
+                    animator.SetBool("atack2", false);
+                    animator.SetBool("idle", true);
+                }
             }
         }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.Mouse0))
-            {
-                animator.SetBool("atack", false);
-                animator.SetBool("atack2", false);
-                animator.SetBool("idle", true);
-            }
-        }
+            
     }
 
 

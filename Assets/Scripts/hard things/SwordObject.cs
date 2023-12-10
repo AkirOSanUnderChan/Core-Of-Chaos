@@ -18,12 +18,15 @@ public class SwordObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var item = playerWC.currentWeaponItem;
-        if (item is WeaponItem weaponItem) 
+        if (playerWC.currentWeaponItem != null)
         {
-            currentWeaponDamage = weaponItem.weaponDamage;
-            currentWeaponSpeedAtack = weaponItem.weaponSpeed;
+            var item = playerWC.currentWeaponItem;
+            if (item is WeaponItem weaponItem)
+            {
+                currentWeaponDamage = weaponItem.weaponDamage;
+                currentWeaponSpeedAtack = weaponItem.weaponSpeed;
 
+            }
         }
     }
 }

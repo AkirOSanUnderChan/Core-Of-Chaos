@@ -34,4 +34,9 @@ public class DropButton : MonoBehaviour
             InventoryManager.instance.EquipWeaponItem(myIndex);
         }
     }
+    public void OnSlot1ButtonClick()
+    {
+        InventoryManager.instance.UnequipWeaponItem();
+        
+    }
 }

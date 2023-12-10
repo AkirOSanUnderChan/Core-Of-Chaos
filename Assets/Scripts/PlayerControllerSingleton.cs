@@ -9,6 +9,7 @@ public class PlayerControllerSingleton : MonoBehaviour
     public playerMenuManager playerMenuManager;
     public InventoryManager inventoryManager;
     public handsAnim handsAnimScript;
+    public PlayerWeaponChanger playerWeaponChanger;
 
     private void Awake()
     {
