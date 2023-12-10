@@ -13,6 +13,9 @@ public class playerMenuManager : MonoBehaviour
     public Item potionItem;
     public bool playerInWindow = false;
 
+    public GameObject player;
+
+
     public AudioSource menuAudioSourse;
     public AudioClip succsecfullBuy;
 
@@ -307,6 +310,7 @@ public class playerMenuManager : MonoBehaviour
 
     public void restartButton()
     {
+        //Destroy(gameObject);
         SceneManager.LoadScene(1);
     }
     public void quitGameButton()

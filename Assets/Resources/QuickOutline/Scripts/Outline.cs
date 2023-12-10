@@ -89,14 +89,17 @@ public class Outline : MonoBehaviour {
     [Header("Distance-based Outline")]
     [SerializeField]
     private float maxDistance = 10f;  // Максимальна відстань, при якій обводка буде максимальною
-
+    public PlayerCOntroller ggController;
     [SerializeField]
     //private float minDistance = 5f;   // Мінімальна відстань, при якій обводка буде відсутня
 
     public Transform targetObject; // Посилання на об'єкт, до якого ви хочете виміряти відстань
 
 
-
+    void Start()
+    {
+        ggController = PlayerControllerSingleton.Instance.PlayerController;
+    }
     void Awake() {
 
     // Cache renderers
@@ -155,7 +158,7 @@ public class Outline : MonoBehaviour {
         Vector3 currentPosition = transform.position;
 
         // Позиція цільового об'єкту
-        Vector3 targetPosition = targetObject.position;
+        Vector3 targetPosition = ggController.transform.position;
 
         // Обчислення відстані між поточною позицією і позицією цільового об'єкту
         float distance = Vector3.Distance(currentPosition, targetPosition);

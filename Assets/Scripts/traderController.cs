@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class traderController : MonoBehaviour
 {
-    public Transform player;
+    public PlayerCOntroller PlayerCOntroller;
     public float interactDistance = 2f;
 
     public GameObject InteractText;
 
     private bool showInteractPrompt = false;
 
+
+    private void Start()
+    {
+        PlayerCOntroller = PlayerControllerSingleton.Instance.PlayerCOntroller;
+    }
     private void Update()
     {
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distance = Vector3.Distance(transform.position, PlayerCOntroller.transform.position);
 
         if (distance <= interactDistance)
         {

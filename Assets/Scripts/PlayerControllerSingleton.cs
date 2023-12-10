@@ -7,7 +7,6 @@ public class PlayerControllerSingleton : MonoBehaviour
 
     public PlayerCOntroller PlayerController;
     public playerMenuManager playerMenuManager;
-    public InventoryManager inventoryManager;
     public handsAnim handsAnimScript;
     public PlayerWeaponChanger playerWeaponChanger;
 

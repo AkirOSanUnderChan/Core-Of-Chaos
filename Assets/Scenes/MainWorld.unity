@@ -9801,6 +9801,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &199942640
 BoxCollider:
@@ -10165,6 +10166,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &220813592
 BoxCollider:
@@ -12427,6 +12429,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &407046877
 BoxCollider:
@@ -15423,6 +15426,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &545682467
 BoxCollider:
@@ -16294,6 +16298,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &590800971
 BoxCollider:
@@ -16485,6 +16490,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &600804493
 BoxCollider:
@@ -19041,6 +19047,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &668830488
 BoxCollider:
@@ -28686,6 +28693,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &1029470527
 BoxCollider:
@@ -37075,7 +37083,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 444f9948dbcbeec4bbd9851c6592b8ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1225993063}
+  PlayerCOntroller: {fileID: 1225993065}
   interactDistance: 5
   InteractText: {fileID: 446525041}
 --- !u!95 &1187117359
@@ -50360,6 +50368,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!1 &1462085421
 GameObject:
@@ -50720,6 +50729,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &1516337989
 BoxCollider:
@@ -52163,6 +52173,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &1595187513
 BoxCollider:
@@ -54616,6 +54627,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &1722398304
 BoxCollider:
@@ -71689,6 +71701,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &1999534142
 BoxCollider:
@@ -72537,6 +72550,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &2045936933
 BoxCollider:
@@ -73579,6 +73593,7 @@ MonoBehaviour:
   bakeKeys: []
   bakeValues: []
   maxDistance: 5
+  ggController: {fileID: 0}
   targetObject: {fileID: 942367055}
 --- !u!65 &2107788492
 BoxCollider:

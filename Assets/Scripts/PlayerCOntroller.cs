@@ -94,10 +94,6 @@ public class PlayerCOntroller : MonoBehaviour
             currentHP = maxHP;
         }
 
-        if (Input.GetKeyDown(KeyCode.Plus))
-        {
-            
-        }
 
         if (Time.time >= nextRegenTime)
         {
@@ -189,7 +185,6 @@ public class PlayerCOntroller : MonoBehaviour
             {
                 useHealingPotion();
                 InventoryManager.instance.UpdateInventoryUI();
-                Debug.Log("Дішло 2 222222222");
             }
 
         }
