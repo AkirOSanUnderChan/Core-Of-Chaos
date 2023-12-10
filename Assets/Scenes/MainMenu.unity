@@ -159,9 +159,9 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: -26.99, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &24156077
 MonoBehaviour:
@@ -443,83 +443,29 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '+ Added inventory system prototype (still under development) Inventory
-    opens on TAB.
-
-    + 3 items appeared:
-
-    Healing potion maxStack=30; Can
-    be bought from NPCs for gold coins. Instantly restores 20HP when used.
-
-    Skeleton
-    skull maxStack=10; Drops from killed skeletons with a certain chance. If the
-    skeleton is the first level - 1 head will drop with a 45% chance. If it is a
-    second-level skeleton, 1 head will drop with a 60% chance.
-
-    Gold coin maxStack=10,000;
-    Drops from skeletons. If it is a skeleton of the first level - 5 coins will drop.
-    If the skeleton is of the second level - 10 coins will drop. With these coins,
-    you can buy goods from NPCs.
-
-
-    Items in the world : On the stage near the
-    player''s spawn, I placed 5 instances of each item in the game (prototype without
-    its 3D model yet). When you approach an item close enough to pick it up, a white
-    outline appears around it. To pick up an item, you need to move the cursor over
-    it, and after the text Press F to pickup appears on the screen, you can pick
-    up the item. The text will also contain information about what subject you are
-    choosing and how much.
-
-
-    ~ the character''s book is currently opened with
-    the I key.
-
-    
-
-    ~ Removed the icon of using the healing potion on the
-    X key. You can use the potion through the inventory, using the Use button, or
-    through the same X key, provided that you have a healing potion in the inventory.
-
-    
-
-    +
-    You can turn on/off post processing again in the pause menu.
-
-    
-
-    + Level
-    2 skeletons once again have fire inside their bodies.
-
-    
-
-    + Added hands
-    for the character.
-
-    
-
-    ~ Changed character attack animation.
-
-    
-
-    ~
-    Improved the adaptive interface in the main menu.
-
-
-    + Added the ability to
-    block enemy attacks. You can block only when the scale is completely filled.
-    That is, until it is filled - even if you put that block - it will not work,
-    although the scale will be subtracted.
-
-    After you press the block button
-    (PCM) at the full scale of the block - you can block until the scale drops to
-    zero.
-
-    The scale will eventually restore itself. When the level of the scale
-    is filled to 100% - it disappears from the screen so as not to interfere with
-    you)
-
-
-    Changed the Change log panel. Added the ability to scroll'
+  m_text: "~Character leveling is now in inventory.\r\n\r\n-The character book has
+    been removed as it is no longer needed.\r\n\r\n+Added the ability to pump stamina.
+    When pumping, the regeneration speed and the maximum amount of stamina of the
+    player increases.\r\n\r\n~Your running will now use your stamina. If the endurance
+    is at zero - you will not be able to run.\n\nAdded a combo attack for the player.
+    In total, there are 3 consecutive attacks:\r\n    1 - a normal swing and sword
+    strike. This is the very first blow.\r\n    2 - horizontal section. This is the
+    second blow with the sword, it can be done if not much time has passed between
+    the first and second blow. This strike is good for hitting multiple enemies at
+    once, as this strike has the longest range.\r\n    3 - stabbing with a sword.
+    This is the 3rd and final strike. During it, the player pulls the sword back
+    to make a sharp lunge. This strike is good for finishing off an opponent from
+    a distance, as it is the longest strike of all. To perform this stroke, it is
+    necessary that little time has passed between the second and third strokes.\n\n+
+    Made a system for changing weapons, each weapon has its own Damage, which does
+    not depend on the player's damage.\r\n\r\n+Added the weapon \"Dull Sword\". It
+    has 2 damage.\r\n\r\n+On the map I hid 1 more sword for 9,999,999 damage for
+    tests. If you see him, you will immediately understand that it is him.\r\n\r\n+Added
+    the Equip button to the player's inventory.\r\n\r\n~changed pictures of items
+    in the inventory.\r\n\r\n~Changed item cell in inventory (Added background for
+    it)\r\n\r\n-Temporarily removed the ability to pump Damage.\r\n\r\n~Fixed a bug
+    where the player did not crouch on the C key.\r\n\r\n~The screen during the game
+    will now have an inventory icon and the inscription Tab."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
   m_sharedMaterial: {fileID: 1041664412853097231, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
@@ -546,7 +492,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 33.55
+  m_fontSize: 35.5
   m_fontSizeBase: 27.5
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -632,9 +578,9 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 29.99, y: 0}
+  m_SizeDelta: {x: 29.99, y: -17}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &263156558
 MonoBehaviour:
@@ -1105,7 +1051,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1293,8 +1239,8 @@ RectTransform:
   m_Father: {fileID: 1780450962}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5314144}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 1, y: -28.570007}
   m_SizeDelta: {x: 42.869995, y: 77.13977}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1763,9 +1709,9 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -26.99, y: -17}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &829494786
 MonoBehaviour:
@@ -1835,7 +1781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1008671915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2902,7 +2848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Changes in \npre-alpha 0.4.0\n"
+  m_text: "Changes in \npre-alpha 0.4.1\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
   m_sharedMaterial: {fileID: 1041664412853097231, guid: 8eaec45a16ec46a4ebd0fcf1897f1af9, type: 2}
