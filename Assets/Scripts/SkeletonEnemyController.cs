@@ -185,15 +185,20 @@ public class SkeletonEnemyController : MonoBehaviour
         if (other.CompareTag("PlayerWeapon"))
         {
             EnemyDamageSourse.PlayOneShot(TakeDamageSound);
-            if (playerController != null)
+            SwordObject sword = other.GetComponent<SwordObject>(); // Отримуємо доступ до класу SwordObject
+
+            if (sword != null)
             {
-                enemyCurrentHP -= playerController.playerDamage;
+                // Отримуємо значення currentWeaponDamage з SwordObject
+                int currentWeaponDamage = sword.currentWeaponDamage;
+
+                // Віднімаємо значення currentWeaponDamage від enemyCurrentHP
+                enemyCurrentHP -= currentWeaponDamage;
 
                 if (enemyCurrentHP <= 0)
                 {
                     if (!IS_DEAD)
                     {
-
                         IS_DEAD = true;
                         EnemyDamageSourse.PlayOneShot(DeathSound);
 
@@ -202,7 +207,6 @@ public class SkeletonEnemyController : MonoBehaviour
                         {
                             InventoryManager.instance.AddItem(enemyDrop, enemyDropAmount);
                         }
- 
 
                         animator.SetBool("death", true);
                         Debug.Log("Enemy is Died");
@@ -211,14 +215,11 @@ public class SkeletonEnemyController : MonoBehaviour
                         InventoryManager.instance.AddItem(coinsTypeForKillEnemy, CointForKillEnemy);
                         Destroy(gameObject, 2);
                     }
-
-                    
-
                 }
             }
             else
             {
-                Debug.LogWarning("PlayerController not found!");
+                Debug.LogWarning("SwordObject component not found on the PlayerWeapon!");
             }
         }
     }

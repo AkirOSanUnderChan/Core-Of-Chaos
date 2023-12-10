@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using static UnityEditor.Progress;
+
+public class SwordObject : MonoBehaviour
+{
+    public PlayerWeaponChanger playerWC;
+    public int currentWeaponDamage;
+    public float currentWeaponSpeedAtack;
+
+
+    void Start()
+    {
+        playerWC = GetComponentInParent<PlayerWeaponChanger>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        var item = playerWC.currentWeaponItem;
+        if (item is WeaponItem weaponItem) 
+        {
+            currentWeaponDamage = weaponItem.weaponDamage;
+            currentWeaponSpeedAtack = weaponItem.weaponSpeed;
+
+        }
+    }
+}

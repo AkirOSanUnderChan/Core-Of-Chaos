@@ -32,6 +32,7 @@ public class PlayerWeaponChanger : MonoBehaviour
         {
             // Створюємо зброю та робимо її дочірньою для цього об'єкта
             currentWeapon = Instantiate(weaponItem.weaponModel, transform);
+            
         }
     }
 
