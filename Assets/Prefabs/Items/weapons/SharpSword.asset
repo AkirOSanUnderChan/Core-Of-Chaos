@@ -13,14 +13,15 @@ MonoBehaviour:
   m_Name: SharpSword
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: 677c9885c82bb2d4c93423dfaa4376ec, type: 3}
-  itemName: DRAGON KILLER (LEGENDARY)
+  itemName: Admin's sword
   itemType: WEAPON
   itemTypeColor: {r: 0.49803922, g: 0, b: 0, a: 1}
-  description: The sword of hero, who defeat the King of dragons.
+  description: Congratulations ! You found the sword I left here for my tests. You
+    can use it for your own purposes, I think you will have fun with it))
   stackable: 0
   maxStack: 1
   canUse: 0
   weaponDamage: 9999999
-  weaponSpeed: 999
+  weaponSpeed: 1
   itsWeapon: 1
   weaponModel: {fileID: 5420835581567340786, guid: add73af4828de894faeba27ed468778e, type: 3}
