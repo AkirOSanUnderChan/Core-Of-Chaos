@@ -169,7 +169,7 @@ public class Outline : MonoBehaviour {
         }
         if (distance < maxDistance)
         {
-            OutlineWidth = 10;
+            OutlineWidth = 5;
         }
 
         if (needsUpdate) {

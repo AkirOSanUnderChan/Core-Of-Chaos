@@ -19,6 +19,9 @@ public class InventoryManager : MonoBehaviour
     public TextMeshProUGUI itemDescriptionType;
     public bool toolTipPanelOn;
 
+    public GameObject itemPickupAlertParent;
+    public GameObject ItemPickUpAlert;
+
     [SerializeField]
     private PlayerCOntroller playerController;
     public PlayerWeaponChanger weaponChanger;
@@ -76,6 +79,26 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Item item, int StackToAdd)
     {
+        // Створюємо текстовий об'єкт з відповідним текстом
+        GameObject pickupAlert = Instantiate(ItemPickUpAlert, itemsParent);
+
+        // Отримуємо компонент Text з створеного текстового об'єкта
+        TextMeshProUGUI pickupText = pickupAlert.GetComponent<TextMeshProUGUI>();
+
+        // Встановлюємо текст з параметрами, які ви хочете вивести
+        pickupText.SetText($"+ {item.itemName} x{StackToAdd}");
+
+        if (pickupAlert == null)
+        {
+            Debug.LogError("pickupAlert is null");
+        }
+
+        if (pickupText == null)
+        {
+            Debug.LogError("pickupText is null");
+        }
+
+
         if (item.stackable)
         {
             foreach (var existingItem in inventoryItems)
@@ -115,6 +138,7 @@ public class InventoryManager : MonoBehaviour
                 }
                 else
                 {
+                    Debug.Log("Не достатньо грошей для покупки");
                     return false;
                 }
             }

@@ -190,17 +190,27 @@ public class handsAnim : MonoBehaviour
 
     public void PlaySound_Atack1()
     {
-        swordAudSoursce.PlayOneShot(swordAtack1Sound);
+        if (swordAudSoursce != null)
+        {
+            swordAudSoursce.PlayOneShot(swordAtack1Sound);
+
+        }
 
     }
     public void PlaySound_Atack2()
     {
-        swordAudSoursce.PlayOneShot(swordAtack2Sound);
+        if (swordAudSoursce != null)
+        {
+            swordAudSoursce.PlayOneShot(swordAtack2Sound);
 
+        }
     }
     public void PlaySound_Atack3()
     {
-        swordAudSoursce.PlayOneShot(swordAtack3Sound);
+        if (swordAudSoursce != null)
+        {
+            swordAudSoursce.PlayOneShot(swordAtack3Sound);
 
+        }
     }
 }

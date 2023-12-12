@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1558089bd3fd543b5f8b44cf30c123, type: 3}
+  m_Name: DragonbladeSword
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: 404b3c5010800554b9de6df4a369baea, type: 3}
+  itemName: Dragonblade
+  itemType: Weapon
+  itemTypeColor: {r: 0.7264151, g: 0, b: 0, a: 1}
+  description: This sword is not sharp, but it was forged by a dragon smith, making
+    it extremely durable.
+  stackable: 0
+  maxStack: 1
+  canUse: 0
+  weaponDamage: 8
+  weaponSpeed: 1
+  itsWeapon: 1
+  weaponModel: {fileID: 1494866913032040846, guid: 55ada557fc27a60408b87e6081ee1a09, type: 3}

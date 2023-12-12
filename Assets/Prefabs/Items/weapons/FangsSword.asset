@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e1558089bd3fd543b5f8b44cf30c123, type: 3}
+  m_Name: FangsSword
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: eb62a75e9e0e28641974a8a0f9b21fa6, type: 3}
+  itemName: Fangs
+  itemType: Weapon
+  itemTypeColor: {r: 0.764151, g: 0, b: 0, a: 1}
+  description: A short but heavy sword.
+  stackable: 0
+  maxStack: 1
+  canUse: 0
+  weaponDamage: 9
+  weaponSpeed: 1
+  itsWeapon: 1
+  weaponModel: {fileID: 1501189503292342389, guid: 99b318b9d2d1aac45b40c09f69e1a530, type: 3}

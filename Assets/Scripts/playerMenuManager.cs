@@ -55,7 +55,8 @@ public class playerMenuManager : MonoBehaviour
     public Image inventorySlot1_Image;
     public TextMeshProUGUI inventorySlot1_Text;
 
-    public GameObject playerMenu;
+    [SerializeField]
+    public GameObject tradeWindowOBJ;
     public bool PM_IsActive;
     public bool Inventory_IsActive;
     public bool isPaused = false;
@@ -75,9 +76,9 @@ public class playerMenuManager : MonoBehaviour
         handsAnimScript = PlayerControllerSingleton.Instance.handsAnimScript;
         ggControll = GetComponent<PlayerCOntroller>();
         playerInventory = GetComponent<playerInventory>();
-        
 
-        playerMenu.SetActive(false);
+
+        tradeWindowOBJ.SetActive(false);
         PauseMenu.SetActive(false);
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -122,7 +123,7 @@ public class playerMenuManager : MonoBehaviour
             {
                 if (playerInWindow)
                 {
-                    playerMenu.SetActive(false);
+                    tradeWindowOBJ.SetActive(false);
                     PM_IsActive = false;
                     ggControll.TraderWindow.SetActive(false);
                     PauseMenu.SetActive(false);
@@ -151,7 +152,7 @@ public class playerMenuManager : MonoBehaviour
         {
             ggControll.playerIsDead = true;
             DeathMenu.SetActive(true);
-            playerMenu.SetActive(false);
+            tradeWindowOBJ.SetActive(false);
             playerInWindow = true;
             playerInPause = true;
             mainHudGroop.SetActive(false);
@@ -189,7 +190,7 @@ public class playerMenuManager : MonoBehaviour
                     {
                         InventoryObject.SetActive(true);
 
-                        playerMenu.SetActive(false);
+                        tradeWindowOBJ.SetActive(false);
                         mainHudGroop.SetActive(false);
                         hotbarGroop.SetActive(false);
 
@@ -200,7 +201,7 @@ public class playerMenuManager : MonoBehaviour
                 }
                 else
                 {
-                    playerMenu.SetActive(false);
+                    tradeWindowOBJ.SetActive(false);
                     InventoryObject.SetActive(false);
 
                     mainHudGroop.SetActive(false);
@@ -219,7 +220,7 @@ public class playerMenuManager : MonoBehaviour
         //            if (PM_IsActive)
         //            {
         //                InventoryObject.SetActive(false);
-        //                playerMenu.SetActive(false);
+        //                tradeWindow.SetActive(false);
 
         //                mainHudGroop.SetActive(true);
         //                hotbarGroop.SetActive(true);
@@ -231,7 +232,7 @@ public class playerMenuManager : MonoBehaviour
         //            {
         //                InventoryObject.SetActive(false);
 
-        //                playerMenu.SetActive(true);
+        //                tradeWindow.SetActive(true);
 
         //                mainHudGroop.SetActive(false);
         //                hotbarGroop.SetActive(false);
